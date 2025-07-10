@@ -1,0 +1,11 @@
+{
+  "name": "cellmart-be",
+  "version": "1.0.0",
+  "description": "cellmart web app back-end",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "author": "ICBT-Students",
+  "license": "ISC"
+}
