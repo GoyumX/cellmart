@@ -1,6 +1,7 @@
 import Hero from './components/Hero'
 import Navigation from './components/Navigation'
 import MobileListing from './components/MobileListing'
+import Testimonials from './components/Testimonials'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     <Hero/>
     </div>
     <MobileListing/> 
+    <Testimonials/>
     </>
   )
 }
