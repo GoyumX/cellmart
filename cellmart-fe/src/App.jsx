@@ -1,16 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import Hero from './components/Hero'
+import Navigation from './components/Navigation'
+import MobileListing from './components/MobileListing'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
+    <Navigation/>
+    <div className="relative min-h-screen">
+    <img
+        src="/assets/hero/image.png"
+        alt=""
+        className=" absolute top-0 w-full h-full object-cover"
+        />
     <Hero/>
-      
+    </div>
+    <MobileListing/> 
     </>
   )
 }
