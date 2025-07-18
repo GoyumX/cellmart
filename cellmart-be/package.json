@@ -7,6 +7,7 @@
     "dev": "nodemon src/index.js"
   },
   "author": "ICBT-Students",
+  "type": "module",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

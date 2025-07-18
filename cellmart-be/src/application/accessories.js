@@ -1,0 +1,1 @@
+import Accessories from "../infastructure/schemas/accessories.js"
