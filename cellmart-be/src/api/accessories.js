@@ -7,13 +7,13 @@ import {
     updateAccessories
 } from "../application/accessories.js";
 
-const accessoriesRouter = express.Router();
+const AccessoriesRouter = express.Router();
 
-accessoriesRouter.route("/").get(getAllAccessories).post(createAccessories);
-accessoriesRouter
+AccessoriesRouter.route("/").get(getAllAccessories).post(createAccessories);
+AccessoriesRouter
     .route("/:id")
     .get(getAccessoriesById)
     .put(updateAccessories)
     .delete(deleteAccessories);
 
-export default accessoriesRouter;
+export default AccessoriesRouter;

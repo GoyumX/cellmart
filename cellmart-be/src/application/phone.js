@@ -1,4 +1,4 @@
-import Phone from "../infastructure/schemas/phone.js";
+import Phone from "../infastructure/schemas/Phone.js";
 
 export const getAllPhone = async (req, res) => {
     const phones = await Phone.find();
@@ -17,4 +17,72 @@ export const getAllPhone = async (req, res) => {
     res.status(200).json(phone);
     return;
   };
+  
+  export const deletePhone = async (req, res) => {
+    const phoneId = req.params.id;
+    await Phone.findByIdAndDelete(phoneId);
+  
+    res.status(200).send();
+    return;
+  };
+  
+  export const createPhone = async (req, res) => {
+    const phone = req.body;
+      
+    if (
+      !phone.brand ||
+      !phone.model ||
+      !phone.price ||
+      !phone.pointdesc ||
+      !phone.description ||
+      !phone.storage ||
+      !phone.colors ||
+      !phone.warranty ||
+      !phone.photoUrl
+    ) {
+      res.status(400).send();
+      return;
+    }
+    
+    await Accessories.create({
+      brand: accessorie.type,
+        model: accessorie.model,
+        price: parseInt(accessorie.price),
+        pointdesc: accessorie.pointdesc,
+        description: accessorie.description,
+        storage: accessorie.storage,
+        colors: accessorie.colors,
+        warranty: accessorie.warranty,
+        photoUrl: accessorie.photoUrl, 
+        
+    });
+  
+    res.status(201).send();
+    return;
+  };
+
+  export const updatePhone = async (req, res) => {
+    const phoneId = req.params.phoneId;
+    const updatedPhone = req.body;
+  
+    if (
+      !updatedPhone.brand ||
+      !updatedPhone.model ||
+      !updatedPhone.price ||
+      !updatedPhone.pointdesc ||
+      !updatedPhone.description ||
+      !updatedPhone.storage ||
+      !updatedPhone.colors ||
+      !updatedPhone.warranty ||
+      !updatedPhone.photoUrl
+    ) {
+      res.status(400).send();
+      return;
+    }
+
+    await Phone.findByIdAndUpdate(phoneId, updatedPhone);
+  
+    res.status(200).send();
+    return;
+  };  
   

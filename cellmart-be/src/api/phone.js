@@ -10,7 +10,7 @@ import {
 const phoneRouter = express.Router();
 
 phoneRouter.route("/").get(getAllPhone).post(createPhone);
-accessoriesRouter
+phoneRouter
     .route("/:id")
     .get(getPhoneById)
     .put(updatePhone)
