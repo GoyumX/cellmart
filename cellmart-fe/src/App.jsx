@@ -2,6 +2,7 @@ import Hero from './components/Hero'
 import Navigation from './components/Navigation'
 import MobileListing from './components/MobileListing'
 import Testimonials from './components/Testimonials'
+import Footer from './components/footer'
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
     </div>
     <MobileListing/> 
     <Testimonials/>
+    <Footer/>
+
     </>
   )
 }
