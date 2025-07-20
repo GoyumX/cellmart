@@ -38,7 +38,7 @@ export const getAllAccessories = async (req, res) => {
     
     await Accessories.create({
         type: accessorie.type,
-        brand: accessorie.body,
+        brand: accessorie.brand,
         model: accessorie.model,
         imageUrl: accessorie.imageUrl,
         warranty: accessorie.warranty,
@@ -58,7 +58,7 @@ export const getAllAccessories = async (req, res) => {
     res.status(200).send();
     return;
   };
-  
+
   export const updateAccessories = async (req, res) => {
     const accessorieId = req.params.accessorieId;
     const updatedAccessorie = req.body;

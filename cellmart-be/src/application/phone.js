@@ -44,16 +44,16 @@ export const getAllPhone = async (req, res) => {
       return;
     }
     
-    await Accessories.create({
-      brand: accessorie.type,
-        model: accessorie.model,
-        price: parseInt(accessorie.price),
-        pointdesc: accessorie.pointdesc,
-        description: accessorie.description,
-        storage: accessorie.storage,
-        colors: accessorie.colors,
-        warranty: accessorie.warranty,
-        photoUrl: accessorie.photoUrl, 
+    await Phone.create({
+      brand: phone.brand,
+        model: phone.model,
+        price: parseInt(phone.price),
+        pointdesc: phone.pointdesc,
+        description: phone.description,
+        storage: phone.storage,
+        colors: phone.colors,
+        warranty: phone.warranty,
+        photoUrl: phone.photoUrl, 
         
     });
   
