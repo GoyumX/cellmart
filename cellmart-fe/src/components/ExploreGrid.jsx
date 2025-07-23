@@ -44,7 +44,7 @@ export default function ExploreGrid() {
                 <h2 className="text-3xl font-bold text-white mb-2 z-0">
                   Search and Explore more accessories
                 </h2>
-                <p className="text-gray-300 z-0">Take a look at a vaiety of our available accessories to choose from.</p>
+                <p className="text-gray-300 z-0">Take a look at a variety of our available accessories to choose from.</p>
               </div>
               <Button
                 asChild

@@ -1,6 +1,7 @@
 import Hero from './components/Hero'
 import Navigation from './components/Navigation'
 import MobileListing from './components/MobileListing'
+import AccessoriesListing from './components/AccessoriesListing'
 import Testimonials from './components/Testimonials'
 import Footer from './components/footer'
 import ExploreGrid from './components/ExploreGrid'
@@ -19,8 +20,9 @@ function App() {
     <Hero/>
     </div>
     <MobileListing/> 
-    <Testimonials/>
+    <AccessoriesListing/>
     <ExploreGrid/>
+    <Testimonials/> 
     <Footer/>
 
     </>
