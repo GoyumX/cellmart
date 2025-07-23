@@ -1,4 +1,4 @@
-import MobileCard from "./MobileCard";
+import ProductCard from "./ProductCard";
 import BrandTab from "./BrandTab";
 import { useState } from "react";
 
@@ -22,7 +22,6 @@ export default function MobileListings() {
       "description": "The Samsung Galaxy S24 Ultra is the latest and greatest phone from Samsung. It has a 6.7-inch display, a 12-megapixel camera"
     },
   ]
-
   const brands = ["ALL", "Apple", "Samsung", "Google", "Oneplus", "Redmi"]
 
   const [selectedbrand, setSelectedBrand] = useState("ALL");
@@ -36,8 +35,8 @@ export default function MobileListings() {
   })
 
   return (
-    <section className="px-8 py-8 lg:py-16">
-      <div className="mb-12">
+    <section className="px-8 py-8 lg:py-12">
+      <div className="mb-5">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Top trending mobile phones
         </h2>
@@ -54,8 +53,8 @@ export default function MobileListings() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
         {
-          filteredmobiles.map((mobile) => {
-            return (<MobileCard key={mobile._id} mobile={mobile} />)
+          filteredmobiles.map((product) => {
+            return (<ProductCard key={product._id} product={product} />)
           })
         }
       </div>
