@@ -1,30 +1,28 @@
-import Hero from './components/Hero'
-import Navigation from './components/Navigation'
-import MobileListing from './components/MobileListing'
-import AccessoriesListing from './components/AccessoriesListing'
-import Testimonials from './components/Testimonials'
-import Footer from './components/footer'
-import ExploreGrid from './components/ExploreGrid'
+import { StrictMode } from "react";
+import { BrowserRouter, Route, Routes } from "react-router";
+import MainLayout from "./layouts/main.layout";
+import RootLayout from "./layouts/root-layout.layout";
+import HomePage from "./pages/home.page";
+import SignInPage from "./pages/sign-in.page";
+import SignUpPage from "./pages/sign-up.page";
 
 function App() {
 
   return (
     <>
-    <Navigation/>
-    <div className="relative min-h-screen">
-    <img
-        src="/assets/hero/image.png"
-        alt=""
-        className=" absolute top-0 w-full h-full object-cover"
-        />
-    <Hero/>
-    </div>
-    <MobileListing/> 
-    <AccessoriesListing/>
-    <ExploreGrid/>
-    <Testimonials/> 
-    <Footer/>
-
+      <StrictMode>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<RootLayout />}>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<HomePage />} />
+              </Route>
+              <Route path="/sign-in" element={<SignInPage />} />
+              <Route path="/sign-up" element={<SignUpPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </StrictMode>
     </>
   )
 }

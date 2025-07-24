@@ -85,4 +85,3 @@ export const getAllPhone = async (req, res) => {
     res.status(200).send();
     return;
   };  
-  
