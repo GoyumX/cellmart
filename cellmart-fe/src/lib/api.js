@@ -5,14 +5,7 @@ const BASE_URL = import.meta.env.VITE_BACKEND_URL;
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}/api/`,
-    prepareHeaders: async (headers) => {
-      const token = await window?.Clerk?.session?.getToken();
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-    },
-  }),
+    baseUrl: `${BASE_URL}/api/`}),
   endpoints: (builder) => ({
     getPhones: builder.query({
       query: () => "phones",

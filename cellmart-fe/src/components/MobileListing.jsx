@@ -63,7 +63,7 @@ export default function MobileListings() {
           }
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
-        <p>Error Loading</p>
+        <p>Error </p>
         </div>
       </section>
     );

@@ -5,15 +5,12 @@ import RootLayout from "./layouts/root-layout.layout";
 import HomePage from "./pages/home.page";
 import SignInPage from "./pages/sign-in.page";
 import SignUpPage from "./pages/sign-up.page";
-import { Provider } from "react-redux";
-import { store } from "./lib/store";
 
 function App() {
 
   return (
     <>
-      <StrictMode>
-      <Provider store={store}>
+      <StrictMode>   
         <BrowserRouter>
           <Routes>
             <Route element={<RootLayout />}>
@@ -25,7 +22,6 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-        </Provider>
       </StrictMode>
     </>
   )

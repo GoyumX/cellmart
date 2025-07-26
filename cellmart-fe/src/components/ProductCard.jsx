@@ -16,7 +16,7 @@ function ProductCard(props) {
                 />
             </div>
             <div className="mt-3 space-y-2">
-                <h3 className="font-semibold text-lg">{props.product.name}</h3>
+                <h3 className="font-semibold text-lg">{props.product.model}</h3>
                 <div className="flex items-baseline space-x-2">
                     <span className="text-m ">Rs. {props.product.price}</span>
                 </div>
