@@ -26,7 +26,7 @@ export const getAllAccessories = async (req, res) => {
       !accessorie.type ||
       !accessorie.brand ||
       !accessorie.model ||
-      !accessorie.imageUrl ||
+      !accessorie.image ||
       !accessorie.price ||
       !accessorie.pointdesc ||
       !accessorie.description ||
@@ -40,7 +40,7 @@ export const getAllAccessories = async (req, res) => {
         type: accessorie.type,
         brand: accessorie.brand,
         model: accessorie.model,
-        imageUrl: accessorie.imageUrl,
+        image: accessorie.image,
         warranty: accessorie.warranty,
         price: parseInt(accessorie.price),
         description: accessorie.description,
@@ -67,7 +67,7 @@ export const getAllAccessories = async (req, res) => {
         !updatedAccessorie.type ||
         !updatedAccessorie.brand ||
         !updatedAccessorie.model ||
-        !updatedAccessorie.imageUrl ||
+        !updatedAccessorie.image ||
         !updatedAccessorie.price ||
         !updatedAccessorie.pointdesc ||
         !updatedAccessorie.description ||

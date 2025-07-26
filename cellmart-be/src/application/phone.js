@@ -38,7 +38,7 @@ export const getAllPhone = async (req, res) => {
       !phone.storage ||
       !phone.colors ||
       !phone.warranty ||
-      !phone.photoUrl
+      !phone.image
     ) {
       res.status(400).send();
       return;
@@ -53,7 +53,7 @@ export const getAllPhone = async (req, res) => {
         storage: phone.storage,
         colors: phone.colors,
         warranty: phone.warranty,
-        photoUrl: phone.photoUrl, 
+        image: phone.image, 
         
     });
   
@@ -74,7 +74,7 @@ export const getAllPhone = async (req, res) => {
       !updatedPhone.storage ||
       !updatedPhone.colors ||
       !updatedPhone.warranty ||
-      !updatedPhone.photoUrl
+      !updatedPhone.image
     ) {
       res.status(400).send();
       return;

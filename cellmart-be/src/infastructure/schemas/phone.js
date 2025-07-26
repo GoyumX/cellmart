@@ -34,7 +34,7 @@ const phoneSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    photoUrl: {
+    image: {
         type: String,
         required: true,
     },
