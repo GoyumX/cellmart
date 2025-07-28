@@ -1,12 +1,14 @@
-import Phone from "../infastructure/schemas/Phone.js";
+import { Request, Response, NextFunction } from "express";
 
-export const getAllPhone = async (req, res) => {
+import Phone from "../infastructure/schemas/Phone.ts";
+
+export const getAllPhone = async (req : Request, res: Response) => {
     const phones = await Phone.find();
     res.status(200).json(phones);
     return;
   };
   
-  export const getPhoneById = async (req, res) => {
+  export const getPhoneById = async (req : Request, res: Response) => {
     const phoneId = req.params.id;
     const phone = await Phone.findById(phoneId);
     if (!phone) {
@@ -18,7 +20,7 @@ export const getAllPhone = async (req, res) => {
     return;
   };
   
-  export const deletePhone = async (req, res) => {
+  export const deletePhone = async (req : Request, res: Response) => {
     const phoneId = req.params.id;
     await Phone.findByIdAndDelete(phoneId);
   
@@ -26,7 +28,7 @@ export const getAllPhone = async (req, res) => {
     return;
   };
   
-  export const createPhone = async (req, res) => {
+  export const createPhone = async (req : Request, res: Response) => {
     const phone = req.body;
       
     if (
@@ -61,7 +63,7 @@ export const getAllPhone = async (req, res) => {
     return;
   };
 
-  export const updatePhone = async (req, res) => {
+  export const updatePhone = async (req : Request, res: Response) => {
     const phoneId = req.params.phoneId;
     const updatedPhone = req.body;
   

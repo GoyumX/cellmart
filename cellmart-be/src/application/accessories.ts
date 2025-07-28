@@ -1,12 +1,14 @@
-import Accessories from "../infastructure/schemas/Accessories.js"
+import { Request, Response, NextFunction } from "express";
 
-export const getAllAccessories = async (req, res) => {
+import Accessories from "../infastructure/schemas/Accessories"
+
+export const getAllAccessories = async (req : Request, res: Response) => {
     const accessories = await Accessories.find();
     res.status(200).json(accessories);
     return;
   };
   
-  export const getAccessoriesById = async (req, res) => {
+  export const getAccessoriesById = async (req : Request, res: Response) => {
     const accessorieId = req.params.id;
     const accessorie = await Accessories.findById(accessorieId);
     if (!accessorie) {
@@ -18,7 +20,7 @@ export const getAllAccessories = async (req, res) => {
     return;
   };
   
-  export const createAccessories = async (req, res) => {
+  export const createAccessories = async (req : Request, res: Response) => {
     const accessorie = req.body;
   
     
@@ -51,7 +53,7 @@ export const getAllAccessories = async (req, res) => {
     return;
   };
   
-  export const deleteAccessories = async (req, res) => {
+  export const deleteAccessories = async (req : Request, res: Response) => {
     const accessorieId = req.params.id;
     await Accessories.findByIdAndDelete(accessorieId);
   
@@ -59,7 +61,7 @@ export const getAllAccessories = async (req, res) => {
     return;
   };
 
-  export const updateAccessories = async (req, res) => {
+  export const updateAccessories = async (req : Request, res: Response) => {
     const accessorieId = req.params.accessorieId;
     const updatedAccessorie = req.body;
   

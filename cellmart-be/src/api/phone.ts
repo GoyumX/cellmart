@@ -5,7 +5,7 @@ import {
     getAllPhone,
     deletePhone,
     updatePhone
-} from "../application/phone.js";
+} from "../application/phone";
 
 const phoneRouter = express.Router();
 

@@ -5,7 +5,7 @@ import {
     getAllAccessories,
     deleteAccessories,
     updateAccessories
-} from "../application/accessories.js";
+} from "../application/accessories";
 
 const AccessoriesRouter = express.Router();
 
