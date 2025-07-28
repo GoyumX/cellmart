@@ -8,7 +8,6 @@
     "start": "ts-node src/index.ts"
   },
   "author": "ICBT-Students",
-  "type": "module",
   "license": "ISC",
   "dependencies": {
     "@clerk/express": "^1.7.13",
