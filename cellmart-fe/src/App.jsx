@@ -5,12 +5,17 @@ import RootLayout from "./layouts/root-layout.layout";
 import HomePage from "./pages/home.page";
 import SignInPage from "./pages/sign-in.page";
 import SignUpPage from "./pages/sign-up.page";
+import { ClerkProvider } from "@clerk/clerk-react";
+
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
 function App() {
 
   return (
     <>
       <StrictMode>   
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
         <BrowserRouter>
           <Routes>
             <Route element={<RootLayout />}>
@@ -22,6 +27,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
+        </ClerkProvider>
       </StrictMode>
     </>
   )
