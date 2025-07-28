@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import {
     Carousel,
     CarouselContent,
@@ -16,7 +16,7 @@ const testimonials = [
     city: "Nugegoda",
     avatar: "N",
     rating: 5,
-    text: "CellMart’s customer service is the best! They helped me choose the right phone with so much patience."
+    text: "CellMart's customer service is the best! They helped me choose the right phone with so much patience."
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const testimonials = [
     city: "Dehiwala",
     avatar: "K",
     rating: 4,
-    text: "I’m really happy with CellMart’s friendly staff. They made the whole buying process so easy."
+    text: "I'm really happy with CellMart's friendly staff. They made the whole buying process so easy."
   },
   {
     id: 3,
@@ -96,7 +96,7 @@ const testimonials = [
     city: "Mount Lavinia",
     avatar: "H",
     rating: 5,
-    text: "Amazing experience! CellMart’s customer service team is always welcoming and supportive."
+    text: "Amazing experience! CellMart's customer service team is always welcoming and supportive."
   },
   {
     id: 12,
@@ -128,7 +128,7 @@ const testimonials = [
     city: "Thalawathugoda",
     avatar: "R",
     rating: 5,
-    text: "CellMart’s customer support is excellent. I recommend them to all my friends!"
+    text: "CellMart's customer support is excellent. I recommend them to all my friends!"
   }
 ];
 
@@ -136,51 +136,117 @@ const testimonials = [
 const Testimonials = () => {
 
     const plugin = React.useRef(
-        Autoplay({ delay: 3000, stopOnInteraction: false })
+        Autoplay({ delay: 4000, stopOnInteraction: false })
     )
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-4">What Our Customers Say</h2>
-        <p className="text-gray-600 text-center mb-12">
-          Hear from our satisfied customers about their experience with our products and services that we offer.
-        </p>
-        <Carousel
-        plugins={[plugin.current]}
-        className="w-full relative mt-6"
-        opts={{
-            loop: true,
-        }}>
+    <section className="py-20 bg-black relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-white/[0.02] rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl"></div>
+      </div>
+      
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
-        <CarouselContent>
-            {testimonials.map((testimonial,index) => (
-            <CarouselItem
-                key={index}
-                className="md:basis-1/3 lg:basis-1/3 xl:basis-1/3 pb-4 select-none"> 
-              <div className="p-1  h-full">
-                <div className="flex items-center mb-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-semibold mr-3">
-                    {testimonial.avatar}
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/80 text-sm font-medium mb-6">
+            <Quote className="w-4 h-4" />
+            <span>Customer Stories</span>
+          </div>
+          
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+            What Our Customers Say
+          </h2>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Hear from our satisfied customers about their experience with our products and exceptional service
+          </p>
+        </div>
+
+        {/* Testimonials carousel */}
+        <div className="relative">
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full relative"
+            opts={{
+                loop: true,
+                align: "start",
+            }}>
+
+            <CarouselContent className="-ml-6">
+                {testimonials.map((testimonial, index) => (
+                <CarouselItem
+                    key={index}
+                    className="md:basis-1/2 lg:basis-1/3 pl-6 pb-4 select-none"> 
+                  <div className="h-full group">
+                    <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col hover:bg-white/[0.07] group-hover:transform group-hover:scale-[1.02]">
+                      {/* Quote icon */}
+                      <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-30 transition-opacity">
+                        <Quote className="w-6 h-6 text-white" />
+                      </div>
+
+                      {/* Rating stars */}
+                      <div className="flex gap-1 mb-4">
+                        {Array.from({ length: 5 }).map((_, starIndex) => (
+                          <Star 
+                            key={starIndex} 
+                            size={16} 
+                            fill={starIndex < testimonial.rating ? "#fbbf24" : "transparent"}
+                            strokeWidth={starIndex < testimonial.rating ? "0" : "1"} 
+                            className={starIndex < testimonial.rating ? "text-amber-400" : "text-gray-600"}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Testimonial text */}
+                      <blockquote className="text-gray-200 leading-relaxed mb-6 flex-grow text-lg">
+                        "{testimonial.text}"
+                      </blockquote>
+
+                      {/* Customer info */}
+                      <div className="flex items-center mt-auto">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white/20 to-white/10 text-white flex items-center justify-center font-bold text-lg mr-4 border border-white/20">
+                          {testimonial.avatar}
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-white text-lg">{testimonial.name}</h3>
+                          <p className="text-gray-400 text-sm">{testimonial.city}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold">{testimonial.name}</h3>
-                    <p className="text-gray-600 text-sm">{testimonial.country}</p>
-                  </div>
-                </div>
-                <p className="text-gray-700 mb-4">{testimonial.text}</p>
-                <div className="flex gap-1 align-end">
-					{Array.from({ length: 5 }).map((_, index) => (
-						<Star key={index} size={16} fill={index < testimonial.rating ? "#FFE234" : "transparent"}strokeWidth={index < testimonial.rating ? "0" : "2"} className="text-[#FFE234]"/>
+                </CarouselItem>
                 ))}
-				</div>
-                </div>
-              </CarouselItem>
-            ))}
-        </CarouselContent>
-        <CarouselPrevious />
-		<CarouselNext />
-        </Carousel>
+            </CarouselContent>
+
+            {/* Custom navigation buttons */}
+            <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white backdrop-blur-md transition-all duration-300" />
+            <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white backdrop-blur-md transition-all duration-300" />
+          </Carousel>
+        </div>
+
+        {/* Bottom stats or call-to-action */}
+        <div className="text-center mt-16">
+          <div className="inline-flex items-center gap-8 px-8 py-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+            <div className="text-center">
+              <div className="text-2xl font-bold text-white">4.8/5</div>
+              <div className="text-gray-400 text-sm">Average Rating</div>
+            </div>
+            <div className="w-px h-10 bg-white/20"></div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-white">2000+</div>
+              <div className="text-gray-400 text-sm">Happy Customers</div>
+            </div>
+            <div className="w-px h-10 bg-white/20"></div>
+            <div className="text-center">
+              <div className="text-2xl font-bold text-white">15+</div>
+              <div className="text-gray-400 text-sm">Years Experience</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
