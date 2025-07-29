@@ -1,10 +1,15 @@
 import { MapPin, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Link } from "react-router";
 
 function ProductCard(props) {
 
     return (
+        <Link to = {`/mobile/${props.product._id}`}
+            key={props.product._id}
+            className="block group relative"
+        >
         <div
             key={props.product._id}
             className="block group relative">
@@ -22,6 +27,7 @@ function ProductCard(props) {
                 </div>
             </div>
         </div>
+        </Link>
     );
 }
 

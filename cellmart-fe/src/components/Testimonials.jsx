@@ -242,7 +242,7 @@ const Testimonials = () => {
             </div>
             <div className="w-px h-10 bg-white/20"></div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-white">15+</div>
+              <div className="text-2xl font-bold text-white">10+</div>
               <div className="text-gray-400 text-sm">Years Experience</div>
             </div>
           </div>
