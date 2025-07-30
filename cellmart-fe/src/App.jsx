@@ -10,6 +10,7 @@ import SignInPage from "./pages/sign-in.page";
 import SignUpPage from "./pages/sign-up.page";
 import AccountPage from "./pages/account-page";
 import MobilePage from "./pages/mobile.page";
+import AccessoryPage from "./pages/accessory.page";
 
 
 import { ClerkProvider } from "@clerk/clerk-react";
@@ -29,6 +30,7 @@ function App() {
               <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/mobile/:id" element={<MobilePage />} />
+                <Route path="/accessory/:id" element={<AccessoryPage/>}/>
                 <Route element={<ProtectedLayout />}>
                   <Route path="/account" element={<AccountPage />} />
                 </Route>
