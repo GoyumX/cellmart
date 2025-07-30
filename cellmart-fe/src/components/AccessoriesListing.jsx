@@ -88,7 +88,7 @@ export default function AccessoriesListing() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
         {
-          filteredaccessories.map((product) => {
+          filteredaccessories.slice(0, 8).map((product) => {
             return (<ProductCard key={product._id} product={product} />)
           })
         }
