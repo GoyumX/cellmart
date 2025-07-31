@@ -16,31 +16,31 @@ export default function Footer() {
       
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.005)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.005)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-      <div className="container mx-auto px-8 py-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-6">
           
-          <div className="lg:col-span-1 flex flex-col gap-6">
-            <a href="/" className="inline-flex items-center gap-3 group">
-              <div className="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all duration-300">
-                <Smartphone className="w-5 h-5 text-white" />
+          <div className="lg:col-span-1 flex flex-col gap-4 sm:gap-6">
+            <a href="/" className="inline-flex items-center gap-2 sm:gap-3 group">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-md border border-white/20 group-hover:bg-white/20 transition-all duration-300">
+                <Smartphone className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
-              <span className="text-2xl font-black text-white tracking-wider">CELLMART</span>
+              <span className="text-xl sm:text-2xl font-black text-white tracking-wider">CELLMART</span>
             </a>
-            <p className="text-gray-400 leading-relaxed max-w-sm">
+            <p className="text-gray-400 leading-relaxed max-w-sm text-sm sm:text-base">
               Our mission is to provide premium quality mobile devices and exceptional service at the best prices for customers across Sri Lanka.
             </p>
-            <div className="flex flex-col gap-2 text-sm">
+            <div className="flex flex-col gap-2 text-xs sm:text-sm">
               <div className="text-gray-500">🕒 Mon - Sat: 9:00 AM - 8:00 PM</div>
               <div className="text-gray-500">📍 Colombo, Sri Lanka</div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-white mb-6 relative">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 relative">
               Quick Links
               <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-white/30"></div>
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {[
                 { name: "About Us", href: "/about" },
                 { name: "Our Story", href: "/story" },
@@ -50,7 +50,7 @@ export default function Footer() {
                 <li key={index}>
                   <a 
                     href={link.href} 
-                    className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block group"
+                    className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block group text-sm sm:text-base"
                   >
                     <span className="group-hover:text-white">{link.name}</span>
                   </a>
@@ -60,11 +60,11 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-white mb-6 relative">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 relative">
               Support
               <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-white/30"></div>
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2 sm:space-y-3">
               {[
                 { name: "Contact Us", href: "/contact" },
                 { name: "Help Center", href: "/help" },
@@ -74,7 +74,7 @@ export default function Footer() {
                 <li key={index}>
                   <a 
                     href={link.href} 
-                    className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block group"
+                    className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block group text-sm sm:text-base"
                   >
                     <span className="group-hover:text-white">{link.name}</span>
                   </a>
@@ -84,35 +84,35 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-bold text-white mb-6 relative">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 relative">
               Stay Connected
               <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-white/30"></div>
             </h3>
-            <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+            <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">
               Get the latest updates on new arrivals, exclusive deals, and tech news.
             </p>
             
-            <form className="space-y-4 mb-8">
+            <form className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
               <div className="relative group">
                 <div className="absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
                 <div className="relative bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden">
                   <Input
                     type="email"
                     placeholder="Enter your email address"
-                    className="bg-transparent border-none text-white placeholder:text-gray-500 focus:border-none focus:outline-none focus-visible:ring-0 h-12 pl-4"
+                    className="bg-transparent border-none text-white placeholder:text-gray-500 focus:border-none focus:outline-none focus-visible:ring-0 h-10 sm:h-12 pl-3 sm:pl-4 text-sm sm:text-base"
                   />
                 </div>
               </div>
               <Button 
                 type="submit" 
-                className="w-full bg-white text-black hover:bg-gray-200 font-semibold h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full bg-white text-black hover:bg-gray-200 font-semibold h-10 sm:h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
                 Subscribe
               </Button>
             </form>
 
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3">
               {[
                 { icon: Instagram, href: "https://instagram.com", color: "hover:bg-pink-600" },
                 { icon: Twitter, href: "https://twitter.com", color: "hover:bg-blue-500" },
@@ -122,9 +122,9 @@ export default function Footer() {
                 <a
                   key={index}
                   href={social.href}
-                  className={`group bg-white/5 backdrop-blur-md p-3 rounded-xl border border-white/10 ${social.color} transition-all duration-300 hover:transform hover:scale-110 hover:border-white/30`}
+                  className={`group bg-white/5 backdrop-blur-md p-2 sm:p-3 rounded-xl border border-white/10 ${social.color} transition-all duration-300 hover:transform hover:scale-110 hover:border-white/30`}
                 >
-                  <social.icon className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+                  <social.icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white transition-colors" />
                   <span className="sr-only">{social.icon.name}</span>
                 </a>
               ))}
@@ -132,14 +132,14 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-5">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex flex-col md:flex-row items-center gap-4 text-sm text-gray-500">
+        <div className="border-t border-white/10 pt-4 sm:pt-5">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 sm:gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500">
               <p>© 2025 CELLMART. All rights reserved.</p>
             </div>
             
-            <div className="flex items-center gap-6">
-              <div className="flex gap-6 text-sm">
+            <div className="flex items-center gap-4 sm:gap-6">
+              <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm">
                 <a href="/privacy" className="text-gray-500 hover:text-white transition-colors">
                   Privacy Policy
                 </a>
@@ -150,9 +150,9 @@ export default function Footer() {
               
               <button
                 onClick={scrollToTop}
-                className="bg-white/5 backdrop-blur-md p-2 rounded-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
+                className="bg-white/5 backdrop-blur-md p-1.5 sm:p-2 rounded-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 group"
                 aria-label="Scroll to top">
-                <ArrowUp className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                <ArrowUp className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 group-hover:text-white transition-colors" />
               </button>
             </div>
           </div>

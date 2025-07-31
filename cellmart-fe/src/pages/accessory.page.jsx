@@ -19,6 +19,10 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Link } from "react-router";
 
 const AccessoryPage = () => {
+
+  let random = Math.random() * (5.0 - 4.0) + 4.0;
+  random = parseFloat(random.toFixed(1));
+
   const { id } = useParams();
   const { data: accessory, isLoading, error, isError } = useGetAccessoryByIdQuery(id);
 
@@ -111,44 +115,34 @@ const AccessoryPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            <div className="relative w-full h-[500px] rounded-lg overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
               <img
                 src={accessory.image}
                 alt={`${accessory.brand} ${accessory.model}`}
                 className="absolute inset-0 w-full h-full object-contain p-4"/>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="secondary" className="bg-gray-800 text-gray-300 border-0">
-                {accessory.type}
-              </Badge>
-              {keyFeatures.slice(0, 2).map((feature, index) => (
-                <Badge key={index} variant="secondary" className="bg-gray-800 text-gray-300 border-0">
-                  {feature.trim()}
-                </Badge>
-              ))}
-            </div>
-            <div className="flex items-center justify-between p-6 bg-gray-900 rounded-lg border border-gray-800">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 bg-gray-900 rounded-lg border border-gray-800 gap-4">
               <div>
-                <p className="text-3xl font-bold text-white">{formatPrice(accessory.price)}</p>
-                <p className="text-sm text-gray-400">One-time payment</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white">{formatPrice(accessory.price)}</p>
+                <p className="text-xs sm:text-sm text-gray-400">One-time payment</p>
               </div>
               <SignedOut>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">
                   <Link to="/sign-in">Sign in to Reserve</Link>
                 </Button>
               </SignedOut>
               <SignedIn>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700">Reserve Accessory</Button>
+                    <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">Reserve Accessory</Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-gray-900 border-gray-800 text-gray-100">
+                  <DialogContent className="bg-gray-900 border-gray-800 text-gray-100 max-w-sm sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle className="text-white">Reserve Your Accessory</DialogTitle>
-                      <DialogDescription className="text-gray-400">
+                      <DialogTitle className="text-white text-lg sm:text-xl">Reserve Your Accessory</DialogTitle>
+                      <DialogDescription className="text-gray-400 text-sm">
                         Fill in your details and we'll contact you within 24 hours to complete your reservation.
                       </DialogDescription>
                     </DialogHeader>
@@ -159,37 +153,36 @@ const AccessoryPage = () => {
             </div>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div className="flex justify-between items-start">
               <div>
-                <h1 className="text-3xl font-bold text-white">{accessory.brand} {accessory.model}</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-white">{accessory.model}</h1>
                 <div className="flex items-center mt-2">
-                  <AccessoryIcon className="h-5 w-5 text-gray-400 mr-1" />
-                  <p className="text-gray-400">CellMart {accessory.type} Collection</p>
+                  <AccessoryIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 mr-1" />
+                  <p className="text-gray-400 text-sm sm:text-base">CellMart {accessory.type} Collection</p>
                 </div>
               </div>
-              <Button variant="outline" size="icon" className="border-gray-700 hover:bg-gray-800 text-gray-400">
-                <Star className="h-4 w-4" />
+              <Button variant="outline" size="icon" className="border-gray-700 hover:bg-gray-800 text-gray-400 w-8 h-8 sm:w-10 sm:h-10">
+                <Star className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span className="sr-only">Add to favorites</span>
               </Button>
             </div>
 
             <div className="flex items-center space-x-1">
-              <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-              <span className="font-bold text-white">4.7</span>
-              <span className="text-gray-400">(1,832 reviews)</span>
+              <Star className="h-4 w-4 sm:h-5 sm:w-5 fill-yellow-400 text-yellow-400" />
+              <span className="font-bold text-white text-sm sm:text-base">{random}</span>
             </div>
 
-            <p className="text-gray-300 leading-relaxed">{accessory.description}</p>
+            <p className="text-gray-300 leading-relaxed text-sm sm:text-base">{accessory.description}</p>
 
             <Card className="bg-gray-900 border-gray-800">
-              <CardContent className="p-4">
-                <h2 className="text-xl font-semibold mb-4 text-white">Key Features</h2>
-                <div className="space-y-3">
+              <CardContent className="p-3 sm:p-4">
+                <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">Key Features</h2>
+                <div className="space-y-2 sm:space-y-3">
                   {keyFeatures.map((feature, index) => (
                     <div key={index} className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                      <span className="text-gray-300">{feature.trim()}</span>
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full mt-1.5 sm:mt-2 mr-2 sm:mr-3 flex-shrink-0"></div>
+                      <span className="text-gray-300 text-sm sm:text-base">{feature.trim()}</span>
                     </div>
                   ))}
                 </div>
@@ -197,27 +190,27 @@ const AccessoryPage = () => {
             </Card>
 
             <Card className="bg-gray-900 border-gray-800">
-              <CardContent className="p-4">
-                <h2 className="text-xl font-semibold mb-4 text-white">Product Details</h2>
-                <div className="space-y-3">
+              <CardContent className="p-3 sm:p-4">
+                <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-white">Product Details</h2>
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex items-center justify-between py-2 border-b border-gray-800">
-                    <span className="text-gray-300">Brand</span>
-                    <span className="text-gray-400">{accessory.brand}</span>
+                    <span className="text-gray-300 text-sm sm:text-base">Brand</span>
+                    <span className="text-gray-400 text-sm sm:text-base">{accessory.brand}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b border-gray-800">
-                    <span className="text-gray-300">Type</span>
-                    <span className="text-gray-400">{accessory.type}</span>
+                    <span className="text-gray-300 text-sm sm:text-base">Type</span>
+                    <span className="text-gray-400 text-sm sm:text-base">{accessory.type}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b border-gray-800">
-                    <span className="text-gray-300">Model</span>
-                    <span className="text-gray-400">{accessory.model}</span>
+                    <span className="text-gray-300 text-sm sm:text-base">Model</span>
+                    <span className="text-gray-400 text-sm sm:text-base">{accessory.model}</span>
                   </div>
                   <div className="flex items-center justify-between py-2">
                     <div className="flex items-center">
-                      <Shield className="h-5 w-5 mr-2 text-gray-400" />
-                      <span className="text-gray-300">Warranty</span>
+                      <Shield className="h-4 w-4 sm:h-5 sm:w-5 mr-2 text-gray-400" />
+                      <span className="text-gray-300 text-sm sm:text-base">Warranty</span>
                     </div>
-                    <span className="text-gray-400">{accessory.warranty}</span>
+                    <span className="text-gray-400 text-sm sm:text-base">{accessory.warranty}</span>
                   </div>
                 </div>
               </CardContent>

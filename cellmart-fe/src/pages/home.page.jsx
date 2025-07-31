@@ -8,13 +8,13 @@ const HomePage = () => {
 
     return (
       <>
-      <div className="relative min-h-screen">
-      <img
+      <div className="relative min-h-screen overflow-hidden">
+        <img
           src="/assets/hero/image.png"
-          alt=""
-          className=" absolute top-0 w-full h-full object-cover"
-          />
-      <Hero/>
+          alt="Hero background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <Hero/>
       </div>
       <MobileListing/> 
       <AccessoriesListing/>

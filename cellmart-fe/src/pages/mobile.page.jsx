@@ -19,6 +19,11 @@ import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Link } from "react-router";
 
 const PhonePage = () => {
+
+  let random = Math.random() * (5.0 - 4.0) + 4.0;
+  random = parseFloat(random.toFixed(1));
+
+
   const { id } = useParams();
   const { data: phone, isLoading, error, isError } = useGetPhoneByIdQuery(id);
 
@@ -106,13 +111,6 @@ const PhonePage = () => {
                 alt={`${phone.brand} ${phone.model}`}
                 className="absolute inset-0 w-full h-full object-contain p-4"/>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {keyFeatures.slice(0, 3).map((feature, index) => (
-                <Badge key={index} variant="secondary" className="bg-gray-800 text-gray-300 border-0">
-                  {feature.trim()}
-                </Badge>
-              ))}
-            </div>
             <div className="flex items-center justify-between p-6 bg-gray-900 rounded-lg border border-gray-800">
               <div>
                 <p className="text-2xl font-bold text-white">{formatPrice(phone.price)}</p>
@@ -145,7 +143,7 @@ const PhonePage = () => {
           <div className="space-y-6">
             <div className="flex justify-between items-start">
               <div>
-                <h1 className="text-3xl font-bold text-white">{phone.brand} {phone.model}</h1>
+                <h1 className="text-3xl font-bold text-white">{phone.model}</h1>
                 <div className="flex items-center mt-2">
                   <Smartphone className="h-5 w-5 text-gray-400 mr-1" />
                   <p className="text-gray-400">CellMart Premium Collection</p>
@@ -159,8 +157,7 @@ const PhonePage = () => {
 
             <div className="flex items-center space-x-1">
               <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-              <span className="font-bold text-white">4.8</span>
-              <span className="text-gray-400">(2,847 reviews)</span>
+              <span className="font-bold text-white">{random}</span>
             </div>
 
             <p className="text-gray-300">{phone.description}</p>

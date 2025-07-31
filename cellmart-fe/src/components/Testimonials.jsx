@@ -141,32 +141,31 @@ const Testimonials = () => {
 
   return (
     <section className="py-20 bg-black relative overflow-hidden">
-      {/* Background decorative elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-white/[0.02] rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-white/[0.02] rounded-full blur-3xl"></div>
       </div>
       
-      {/* Grid pattern overlay */}
+      {/* Grid overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/80 text-sm font-medium mb-6">
-            <Quote className="w-4 h-4" />
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/80 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+            <Quote className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Customer Stories</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
             What Our Customers Say
           </h2>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed px-4">
             Hear from our satisfied customers about their experience with our products and exceptional service
           </p>
         </div>
 
-        {/* Testimonials carousel */}
+        {/* start carousel */}
         <div className="relative">
           <Carousel
             plugins={[plugin.current]}
@@ -176,24 +175,24 @@ const Testimonials = () => {
                 align: "start",
             }}>
 
-            <CarouselContent className="-ml-6">
+            <CarouselContent className="-ml-2 sm:-ml-6">
                 {testimonials.map((testimonial, index) => (
                 <CarouselItem
                     key={index}
-                    className="md:basis-1/2 lg:basis-1/3 pl-6 pb-4 select-none"> 
+                    className="basis-full sm:basis-1/2 lg:basis-1/3 pl-2 sm:pl-6 pb-4 select-none"> 
                   <div className="h-full group">
-                    <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col hover:bg-white/[0.07] group-hover:transform group-hover:scale-[1.02]">
-                      {/* Quote icon */}
-                      <div className="absolute top-4 right-4 opacity-20 group-hover:opacity-30 transition-opacity">
-                        <Quote className="w-6 h-6 text-white" />
+                    <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-4 sm:p-6 border border-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col hover:bg-white/[0.07] group-hover:transform group-hover:scale-[1.02]">
+                      {/* Quotes*/}
+                      <div className="absolute top-3 right-3 sm:top-4 sm:right-4 opacity-20 group-hover:opacity-30 transition-opacity">
+                        <Quote className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
                       </div>
 
-                      {/* Rating stars */}
-                      <div className="flex gap-1 mb-4">
+                      {/* stars */}
+                      <div className="flex gap-1 mb-3 sm:mb-4">
                         {Array.from({ length: 5 }).map((_, starIndex) => (
                           <Star 
                             key={starIndex} 
-                            size={16} 
+                            size={14} 
                             fill={starIndex < testimonial.rating ? "#fbbf24" : "transparent"}
                             strokeWidth={starIndex < testimonial.rating ? "0" : "1"} 
                             className={starIndex < testimonial.rating ? "text-amber-400" : "text-gray-600"}
@@ -201,19 +200,17 @@ const Testimonials = () => {
                         ))}
                       </div>
 
-                      {/* Testimonial text */}
-                      <blockquote className="text-gray-200 leading-relaxed mb-6 flex-grow text-lg">
+                      <blockquote className="text-gray-200 leading-relaxed mb-4 sm:mb-6 flex-grow text-sm sm:text-base lg:text-lg">
                         "{testimonial.text}"
                       </blockquote>
 
-                      {/* Customer info */}
                       <div className="flex items-center mt-auto">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-white/20 to-white/10 text-white flex items-center justify-center font-bold text-lg mr-4 border border-white/20">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-white/20 to-white/10 text-white flex items-center justify-center font-bold text-base sm:text-lg mr-3 sm:mr-4 border border-white/20">
                           {testimonial.avatar}
                         </div>
                         <div>
-                          <h3 className="font-semibold text-white text-lg">{testimonial.name}</h3>
-                          <p className="text-gray-400 text-sm">{testimonial.city}</p>
+                          <h3 className="font-semibold text-white text-base sm:text-lg">{testimonial.name}</h3>
+                          <p className="text-gray-400 text-xs sm:text-sm">{testimonial.city}</p>
                         </div>
                       </div>
                     </div>
@@ -222,28 +219,26 @@ const Testimonials = () => {
                 ))}
             </CarouselContent>
 
-            {/* Custom navigation buttons */}
-            <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white backdrop-blur-md transition-all duration-300" />
-            <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white backdrop-blur-md transition-all duration-300" />
+            <CarouselPrevious className="absolute -left-2 sm:-left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white backdrop-blur-md transition-all duration-300 w-8 h-8 sm:w-10 sm:h-10" />
+            <CarouselNext className="absolute -right-2 sm:-right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 border-white/20 hover:border-white/30 text-white backdrop-blur-md transition-all duration-300 w-8 h-8 sm:w-10 sm:h-10" />
           </Carousel>
         </div>
 
-        {/* Bottom stats or call-to-action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-8 px-8 py-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+        <div className="text-center mt-12 sm:mt-16">
+          <div className="inline-flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
             <div className="text-center">
-              <div className="text-2xl font-bold text-white">4.8/5</div>
-              <div className="text-gray-400 text-sm">Average Rating</div>
+              <div className="text-xl sm:text-2xl font-bold text-white">4.8/5</div>
+              <div className="text-gray-400 text-xs sm:text-sm">Average Rating</div>
             </div>
-            <div className="w-px h-10 bg-white/20"></div>
+            <div className="w-px h-8 sm:h-10 bg-white/20"></div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-white">2000+</div>
-              <div className="text-gray-400 text-sm">Happy Customers</div>
+              <div className="text-xl sm:text-2xl font-bold text-white">2000+</div>
+              <div className="text-gray-400 text-xs sm:text-sm">Happy Customers</div>
             </div>
-            <div className="w-px h-10 bg-white/20"></div>
+            <div className="w-px h-8 sm:h-10 bg-white/20"></div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-white">10+</div>
-              <div className="text-gray-400 text-sm">Years Experience</div>
+              <div className="text-xl sm:text-2xl font-bold text-white">10+</div>
+              <div className="text-gray-400 text-xs sm:text-sm">Years Experience</div>
             </div>
           </div>
         </div>

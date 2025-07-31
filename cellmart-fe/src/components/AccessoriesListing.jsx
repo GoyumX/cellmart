@@ -30,10 +30,10 @@ export default function AccessoriesListing() {
             Choose the most reliable and effcient accessories here at Cellmart
           </p>
         </div>
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-2 flex-wrap">
           {
             types.map((types) => {
-              return (<BrandTab selectedtypes={selectedtypes} name={types} onClick={handleSelectedtypes} />)
+              return (<BrandTab key={types} selectedtypes={selectedtypes} name={types} onClick={handleSelectedtypes} />)
             })
           }
         </div>
@@ -55,10 +55,10 @@ export default function AccessoriesListing() {
             Choose the most reliable and effcient accessories here at Cellmart
           </p>
         </div>
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-2 flex-wrap">
           {
             types.map((types) => {
-              return (<BrandTab selectedtypes={selectedtypes} name={types} onClick={handleSelectedtypes} />)
+              return (<BrandTab key={types} selectedtypes={selectedtypes} name={types} onClick={handleSelectedtypes} />)
             })
           }
         </div>
@@ -79,10 +79,10 @@ export default function AccessoriesListing() {
           Choose the most reliable and effcient accessories here at Cellmart
         </p>
       </div>
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center gap-2 flex-wrap">
         {
           types.map((types) => {
-            return (<BrandTab selectedtypes={selectedtypes} name={types} onClick={handleSelectedtypes} />)
+            return (<BrandTab key={types} selectedtypes={selectedtypes} name={types} onClick={handleSelectedtypes} />)
           })
         }
       </div>

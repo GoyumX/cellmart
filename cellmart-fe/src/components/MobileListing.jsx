@@ -30,10 +30,10 @@ export default function MobileListings() {
             Discover the prefect mobile phone for you
           </p>
         </div>
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-2 flex-wrap">
           {
             brands.map((brand) => {
-              return (<BrandTab selectedbrand={selectedbrand} name={brand} onClick={handleSelectedBrand} />)
+              return (<BrandTab key={brand} selectedbrand={selectedbrand} name={brand} onClick={handleSelectedBrand} />)
             })
           }
         </div>
@@ -55,10 +55,10 @@ export default function MobileListings() {
             Discover the prefect mobile phone for you
           </p>
         </div>
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-2 flex-wrap">
           {
             brands.map((brand) => {
-              return (<BrandTab selectedbrand={selectedbrand} name={brand} onClick={handleSelectedBrand} />)
+              return (<BrandTab key={brand} selectedbrand={selectedbrand} name={brand} onClick={handleSelectedBrand} />)
             })
           }
         </div>
@@ -79,10 +79,10 @@ export default function MobileListings() {
           Discover the prefect mobile phone for you
         </p>
       </div>
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center gap-2 flex-wrap">
         {
           brands.map((brand) => {
-            return (<BrandTab selectedbrand={selectedbrand} name={brand} onClick={handleSelectedBrand} />)
+            return (<BrandTab key={brand} selectedbrand={selectedbrand} name={brand} onClick={handleSelectedBrand} />)
           })
         }
       </div>

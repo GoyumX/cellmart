@@ -8,24 +8,27 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative z-10 min-h-screen flex flex-col justify-center">
-      {/* Dark overlay for the background image */}
+    <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]"></div>
       
-      {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
 
-      {/* Subtle background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-amber-900/3 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 bg-orange-900/2 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-yellow-900/2 rounded-full blur-3xl animate-pulse delay-500"></div>
+        <div className="absolute top-10 sm:top-20 left-4 sm:left-20 w-48 h-48 sm:w-96 sm:h-96 bg-amber-900/3 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 sm:bottom-20 right-4 sm:right-20 w-40 h-40 sm:w-80 sm:h-80 bg-orange-900/2 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-36 h-36 sm:w-72 sm:h-72 bg-yellow-900/2 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      {/* Custom CSS for animated search bar */}
+      {/* CSS for the animation */}
       <style jsx>{`
         .search-container {
-          height: 76px;
+          height: 60px;
+        }
+        
+        @media (min-width: 640px) {
+          .search-container {
+            height: 76px;
+          }
         }
         
         .animated-border,
@@ -140,9 +143,16 @@ export default function Hero() {
           height: calc(100% - 4px);
           border-radius: 9999px;
           color: #e5e7eb;
-          padding: 0 1.5rem;
-          font-size: 1.125rem;
+          padding: 0 1rem;
+          font-size: 0.875rem;
           margin: 2px;
+        }
+        
+        @media (min-width: 640px) {
+          .search-input {
+            padding: 0 1.5rem;
+            font-size: 1.125rem;
+          }
         }
         
         .search-input::placeholder {
@@ -227,16 +237,14 @@ export default function Hero() {
         }
       `}</style>
 
-      <div className="relative z-20 flex flex-col items-center justify-center px-6 py-20">
-        {/* Enhanced Badge icon */}
-        <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-800/10 via-cyan-200/10 to-cyan-200/10 backdrop-blur-md border border-white/20 text-white/90 text-sm font-medium mb-8 hover:from-cyan-800/20 hover:via-cyan-200/20 hover:to-cyan-800/20 transition-all duration-300 group">
-          <Sparkles className="w-4 h-4 text-purple-400 sparkle-animation" />
+      <div className="relative z-20 flex flex-col items-center justify-center py-12 sm:py-16 lg:py-20">
+        <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gradient-to-r from-cyan-800/10 via-cyan-200/10 to-cyan-200/10 backdrop-blur-md border border-white/20 text-white/90 text-xs sm:text-sm font-medium mb-6 sm:mb-8 hover:from-cyan-800/20 hover:via-cyan-200/20 hover:to-cyan-800/20 transition-all duration-300 group">
+          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-purple-400 sparkle-animation" />
           <span>AI-Powered Device Discovery</span>
-          <Zap className="w-4 h-4 text-cyan-400 floating-icon" />
+          <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400 floating-icon" />
         </div>
 
-
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 text-center leading-tight tracking-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-black mb-4 sm:mb-6 text-center leading-tight tracking-tight">
           <span className="text-gray-100">
             Find Your Perfect
           </span>
@@ -245,13 +253,13 @@ export default function Hero() {
           </span>
         </h1>
       
-        <p className="text-xl md:text-2xl text-gray-300 mb-12 text-center max-w-3xl leading-relaxed font-light">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 sm:mb-12 text-center max-w-3xl leading-relaxed font-light px-4">
           Describe your ideal mobile device and our 
           <span className="text-gray-300 font-medium"> AI will find the perfect match </span>
           tailored just for you
         </p>
 
-        <div className="w-full max-w-5xl mb-8">
+        <div className="w-full max-w-5xl mb-6 sm:mb-8 px-4">
           <div className="relative group">
             <div className="search-container relative">
               <div className="search-wrapper">
@@ -266,18 +274,18 @@ export default function Hero() {
                   
                   <input
                     type="text"
-                    placeholder="I need a phone with excellent camera, long battery life, under $800..."
-                    className="search-input pl-20 pr-52"
+                    placeholder="I need a phone with excellent camera, long battery life, under 150,000 LKR ..."
+                    className="search-input pl-16 sm:pl-20 pr-20 sm:pr-52 text-sm sm:text-base"
                   />
                   
                   <Button
                     type="submit"
                     onClick={handleSearch}
-                    className="search-button rounded-full w-32 md:w-48 h-[calc(100%-16px)] flex items-center gap-2 rounded-full w-48 flex items-center gap-x-2 lg:h-15 hover:bg-gray-600 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="search-button rounded-full w-20 sm:w-32 md:w-48 h-[calc(100%-16px)] flex items-center gap-1 sm:gap-2 hover:bg-gray-600 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
-                    <Sparkles className="w-5 h-5 animate-pulse text-sky-500" />
-                    <span className="hidden sm:inline text-lg">AI Search</span>
-                    <ArrowRight className="w-4 h-4 sm:hidden" />
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse text-sky-500" />
+                    <span className="hidden sm:inline text-sm sm:text-lg">AI Search</span>
+                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 sm:hidden" />
                   </Button>
                 </div>
               </div>
@@ -285,7 +293,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 max-w-5xl mb-16">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 max-w-5xl mb-12 sm:mb-16 px-4">
           <span className="hidden sm:flex items-center gap-2 text-gray-400 text-sm mr-2">
             <Sparkles className="w-3 h-3 text-amber-400" />
             Popular searches:
@@ -299,37 +307,31 @@ export default function Hero() {
           ].map((suggestion, index) => (
             <button
               key={index}
-              className="px-4 py-2 rounded-full bg-gray-900/40 hover:bg-amber-900/20 border border-gray-700/50 hover:border-amber-700/40 text-gray-300 hover:text-amber-200 text-sm transition-all duration-300 backdrop-blur-sm hover:transform hover:scale-105"
-            >
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-900/40 hover:bg-gray-800/30 border border-gray-700/50 hover:border-gray-800/30 text-gray-300 hover:text-yellow-100 text-xs sm:text-sm transition-all duration-300 backdrop-blur-sm hover:transform hover:scale-105">
               {suggestion}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-3 gap-8 text-center">
-          <div className="group cursor-pointer p-6 rounded-2xl bg-gray-900/30 border border-gray-800/50 hover:border-amber-800/40 transition-all duration-300 hover:transform hover:scale-105 hover:bg-amber-900/10">
-            <div className="text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-amber-200 mb-2 transition-colors">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center px-4">
+          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 ">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-blue-500/60 mb-2 transition-colors">
               12K+
             </div>
-            <div className="text-gray-400 text-sm uppercase tracking-wider">Devices Available</div>
+            <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider">Devices Available</div>
           </div>
-          <div className="group cursor-pointer p-6 rounded-2xl bg-gray-900/30 border border-gray-800/50 hover:border-amber-800/40 transition-all duration-300 hover:transform hover:scale-105 hover:bg-amber-900/10">
-            <div className="text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-amber-200 mb-2 transition-colors">
+          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 ">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-blue-500/60 mb-2 transition-colors">
               50K+
             </div>
-            <div className="text-gray-400 text-sm uppercase tracking-wider">Happy Customers</div>
+            <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider">Happy Customers</div>
           </div>
-          <div className="group cursor-pointer p-6 rounded-2xl bg-gray-900/30 border border-gray-800/50 hover:border-amber-800/40 transition-all duration-300 hover:transform hover:scale-105 hover:bg-amber-900/10">
-            <div className="text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-amber-200 mb-2 transition-colors">
+          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 ">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-blue-500/60 mb-2 transition-colors">
               99%
             </div>
-            <div className="text-gray-400 text-sm uppercase tracking-wider">Match Accuracy</div>
+            <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider">Match Accuracy</div>
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-gray-400 group cursor-pointer">
-          <span className="text-xs uppercase tracking-wider mb-2 group-hover:text-amber-300 transition-colors">Scroll to explore</span>
-          <div className="w-0.5 h-8 bg-gradient-to-b from-amber-600/60 to-transparent group-hover:from-amber-500/80 transition-all duration-300"></div>
         </div>
       </div>
     </div>
