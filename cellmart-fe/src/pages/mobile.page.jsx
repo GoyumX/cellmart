@@ -3,8 +3,17 @@ import { useGetPhoneByIdQuery } from "@/lib/api";
 import { Smartphone, MapPin, Star, Wifi, Zap, Camera, Battery, Shield, HardDrive, Palette } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import ReservationForm from "@/components/ReservationForm";
 
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Link } from "react-router";
@@ -91,12 +100,11 @@ const PhonePage = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
-            <div className="relative w-full h-[400px] bg-gray-900 rounded-lg overflow-hidden">
+            <div className="relative w-full h-[500px] rounded-lg overflow-hidden">
               <img
                 src={phone.image}
                 alt={`${phone.brand} ${phone.model}`}
-                className="absolute inset-0 w-full h-full object-contain p-4"
-              />
+                className="absolute inset-0 w-full h-full object-contain p-4"/>
             </div>
             <div className="flex flex-wrap gap-2">
               {keyFeatures.slice(0, 3).map((feature, index) => (
@@ -104,6 +112,33 @@ const PhonePage = () => {
                   {feature.trim()}
                 </Badge>
               ))}
+            </div>
+            <div className="flex items-center justify-between p-6 bg-gray-900 rounded-lg border border-gray-800">
+              <div>
+                <p className="text-2xl font-bold text-white">{formatPrice(phone.price)}</p>
+                <p className="text-sm text-gray-400">One-time payment</p>
+              </div>
+              <SignedOut>
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                  <Link to="/sign-in">Sign in to Reserve</Link>
+                </Button>
+              </SignedOut>
+              <SignedIn>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700">Reserve Accessory</Button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-gray-900 border-gray-800 text-gray-100">
+                    <DialogHeader>
+                      <DialogTitle className="text-white">Reserve Your Accessory</DialogTitle>
+                      <DialogDescription className="text-gray-400">
+                        Fill in your details and we'll contact you within 24 hours to complete your reservation.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <ReservationForm accessoryId={id}/>
+                  </DialogContent>
+                </Dialog>
+              </SignedIn>
             </div>
           </div>
 
@@ -155,8 +190,7 @@ const PhonePage = () => {
                     <Badge 
                       key={index} 
                       variant="outline" 
-                      className="border-gray-600 text-gray-300 hover:bg-gray-800"
-                    >
+                      className="border-gray-600 text-gray-300 hover:bg-gray-800">
                       {storage}
                     </Badge>
                   ))}
@@ -175,8 +209,7 @@ const PhonePage = () => {
                     <Badge 
                       key={index} 
                       variant="outline" 
-                      className="border-gray-600 text-gray-300 hover:bg-gray-800"
-                    >
+                      className="border-gray-600 text-gray-300 hover:bg-gray-800">
                       {color}
                     </Badge>
                   ))}
@@ -207,19 +240,6 @@ const PhonePage = () => {
                 </div>
               </CardContent>
             </Card>
-
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-2xl font-bold text-white">{formatPrice(phone.price)}</p>
-                <p className="text-sm text-gray-400">One-time payment</p>
-              </div>
-              <SignedOut>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                  <Link to="/sign-in">Sign in to Reserve</Link>
-                </Button>
-              </SignedOut>
-              
-            </div>
           </div>
         </div>
       </div>

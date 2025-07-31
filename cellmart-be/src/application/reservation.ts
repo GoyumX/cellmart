@@ -46,6 +46,7 @@ export const deleteReservation = async (req: Request, res: Response, next: NextF
 
 export const createReservation = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        
         const reservation = req.body;
         const user = req.auth;
 
