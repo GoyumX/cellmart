@@ -1,4 +1,6 @@
 import { useParams } from "react-router";
+import { useEffect } from 'react';
+
 import { useGetPhoneByIdQuery } from "@/lib/api";
 import { Smartphone, MapPin, Star, Wifi, Zap, Camera, Battery, Shield, HardDrive, Palette } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +25,9 @@ const PhonePage = () => {
   let random = Math.random() * (5.0 - 4.0) + 4.0;
   random = parseFloat(random.toFixed(1));
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const { id } = useParams();
   const { data: phone, isLoading, error, isError } = useGetPhoneByIdQuery(id);
@@ -111,10 +116,10 @@ const PhonePage = () => {
                 alt={`${phone.brand} ${phone.model}`}
                 className="absolute inset-0 w-full h-full object-contain p-4"/>
             </div>
-            <div className="flex items-center justify-between p-6 bg-gray-900 rounded-lg border border-gray-800">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 bg-gray-900 rounded-lg border border-gray-800 gap-4">
               <div>
-                <p className="text-2xl font-bold text-white">{formatPrice(phone.price)}</p>
-                <p className="text-sm text-gray-400">One-time payment</p>
+                <p className="text-2xl sm:text-3xl font-bold text-white">{formatPrice(phone.price)}</p>
+                <p className="text-xs sm:text-sm text-gray-400">One-time payment</p>
               </div>
               <SignedOut>
                 <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
@@ -124,11 +129,11 @@ const PhonePage = () => {
               <SignedIn>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700">Reserve Accessory</Button>
+                    <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">Reserve Accessory</Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-gray-900 border-gray-800 text-gray-100">
+                  <DialogContent className="bg-gray-900 border-gray-800 text-gray-100 max-w-sm sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle className="text-white">Reserve Your Accessory</DialogTitle>
+                      <DialogTitle className="text-white text-lg sm:text-xl">Reserve Your Accessory</DialogTitle>
                       <DialogDescription className="text-gray-400">
                         Fill in your details and we'll contact you within 24 hours to complete your reservation.
                       </DialogDescription>

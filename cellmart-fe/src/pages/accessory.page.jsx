@@ -1,4 +1,6 @@
 import { useParams } from "react-router";
+import { useEffect } from "react";
+
 import { useGetAccessoryByIdQuery } from "@/lib/api";
 import { Headphones, Star, Shield, Zap, Volume2, Bluetooth } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -22,6 +24,11 @@ const AccessoryPage = () => {
 
   let random = Math.random() * (5.0 - 4.0) + 4.0;
   random = parseFloat(random.toFixed(1));
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
 
   const { id } = useParams();
   const { data: accessory, isLoading, error, isError } = useGetAccessoryByIdQuery(id);
