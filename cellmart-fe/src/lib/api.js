@@ -60,6 +60,32 @@ export const api = createApi({
         method: "DELETE",
       }),
     }),
+    getReservation: builder.query({
+      query: () => "reservation",
+    }),
+    getReservationById: builder.query({
+      query: (id) => `reservation/${id}`,
+    }),
+    createReservation: builder.mutation({
+      query: (reservation) => ({
+        url: "reservation",
+        method: "POST",
+        body: reservation,
+      }),
+    }),
+    updateReservation: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `reservation/${id}`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
+    deleteReservation: builder.mutation({
+      query: (id) => ({
+        url: `reservation/${id}`,
+        method: "DELETE",
+      }),
+  })
   }),
 });
 
@@ -76,4 +102,11 @@ export const {
   useCreateAccessoryMutation,
   useUpdateAccessoryMutation,
   useDeleteAccessoryMutation,
+
+  useCreateReservationMutation,
+  useGetReservationByIdQuery,
+  useGetReservationQuery,
+  useUpdateReservationMutation,
+  useDeleteReservationMutation,
+
 } = api;

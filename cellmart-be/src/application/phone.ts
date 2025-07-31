@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-import Phone from "../infastructure/schemas/Phone.ts";
+import Phone from "../infastructure/schemas/Phone";
 
 export const getAllPhone = async (req : Request, res: Response) => {
     const phones = await Phone.find();
@@ -47,7 +47,7 @@ export const getAllPhone = async (req : Request, res: Response) => {
     }
     
     await Phone.create({
-      brand: phone.brand,
+        brand: phone.brand,
         model: phone.model,
         price: parseInt(phone.price),
         pointdesc: phone.pointdesc,
@@ -56,7 +56,6 @@ export const getAllPhone = async (req : Request, res: Response) => {
         colors: phone.colors,
         warranty: phone.warranty,
         image: phone.image, 
-        
     });
   
     res.status(201).send();
