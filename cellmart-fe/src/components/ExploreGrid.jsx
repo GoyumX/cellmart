@@ -1,5 +1,6 @@
 import { Globe, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router";
 
 export default function ExploreGrid() {
   return (
@@ -22,10 +23,10 @@ export default function ExploreGrid() {
                 asChild
                 className="bg-white text-black hover:bg-white/90 rounded-full w-full sm:w-auto px-6 py-2 flex items-center justify-center gap-2 z-0"
               >
-                <a href="/devices">
+                <Link to="/devices">
                   Show All Devices
                   <ArrowRight />
-                </a>
+                </Link>
               </Button>
             </div>
             <img
@@ -50,10 +51,10 @@ export default function ExploreGrid() {
                 asChild
                 className="bg-white text-black hover:bg-white/90 rounded-full w-full sm:w-auto px-6 py-2 flex items-center justify-center gap-2 z-0"
               >
-                <a href="/accessories">
+                <Link to="/accessories">
                   Show All Accessories
                   <ArrowRight />
-                </a>
+                </Link>
               </Button>
             </div>
             <img

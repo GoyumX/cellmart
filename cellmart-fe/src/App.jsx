@@ -11,10 +11,11 @@ import SignUpPage from "./pages/sign-up.page";
 import AccountPage from "./pages/account-page";
 import MobilePage from "./pages/mobile.page";
 import AccessoryPage from "./pages/accessory.page";
-
+import AllDevices from "./components/AllDevices";
+import AllAccessories from "./components/AllAccessories";
+import ScrollToTop from "./components/ScrollToTop";
 
 import { ClerkProvider } from "@clerk/clerk-react";
-
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -25,10 +26,13 @@ function App() {
       <StrictMode>   
       <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
         <BrowserRouter>
+        <ScrollToTop/>
           <Routes>
             <Route element={<RootLayout />}>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/devices" element={<AllDevices />} />
+                <Route path="/accessories" element={<AllAccessories />} />
                 <Route path="/mobile/:id" element={<MobilePage />} />
                 <Route path="/accessory/:id" element={<AccessoryPage/>}/>
                 <Route element={<ProtectedLayout />}>
