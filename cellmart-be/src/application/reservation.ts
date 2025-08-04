@@ -7,6 +7,11 @@ declare global {
         interface Request {
             auth?: {
                 userId: string;
+                sessionClaims?: {
+                    metadata: {
+                        role?: "admin";
+                    };
+                };
             };
         }
     }
