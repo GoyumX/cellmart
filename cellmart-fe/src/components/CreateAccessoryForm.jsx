@@ -1,4 +1,4 @@
-import { useCreatePhoneMutation } from "@/lib/api";
+import { useCreateAccessoryMutation } from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -12,61 +12,73 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-  } from "@/components/ui/form"
+} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 
 const formSchema = z.object({
+    type: z.string().min(1, { message: "Type is required" }),
     brand: z.string().min(1, { message: "Brand is required" }),
     model: z.string().min(1, { message: "Model is required" }),
     price: z.number().min(1, { message: "Price must be greater than 0" }),
     pointdesc: z.string().min(1, { message: "Point description is required" }),
     description: z.string().min(1, { message: "Description is required" }),
-    storage: z.string().min(1, { message: "Storage options are required" }),
-    colors: z.string().min(1, { message: "Color options are required" }),
     warranty: z.string().min(1, { message: "Warranty information is required" }),
     image: z.string().url({ message: "Please enter a valid image URL" }),
 });
 
-export default function CreatePhoneForm() {
-    const [createPhone, { isLoading }] = useCreatePhoneMutation();
+const accessoryTypes = [
+    { value: "Earbuds", label: "Earbuds" },
+    { value: "Bluetooth Speakers", label: "Bluetooth Speakers" },
+    { value: "Cables", label: "Cables" },
+    { value: "Chargers", label: "Chargers" },
+    { value: "Powerbanks", label: "Powerbanks" },
+];
+
+export default function CreateAccessoryForm() {
+    const [createAccessory, { isLoading }] = useCreateAccessoryMutation();
   
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            type: "",
             brand: "",
             model: "",
             price: "",
             pointdesc: "",
             description: "",
-            storage: "",
-            colors: "",
             warranty: "",
             image: "",
         }
     });
 
     const handleSubmit = async (values) => {
-        const { brand, model, price, pointdesc, description, storage, colors, warranty, image } = values;
+        const { type, brand, model, price, pointdesc, description, warranty, image } = values;
         
         try {
-            toast.loading("Creating phone...");
-            await createPhone({
+            toast.loading("Creating accessory...");
+            await createAccessory({
+                type,
                 brand,
                 model,
                 price,
                 pointdesc,
                 description,
-                storage,
-                colors,
                 warranty,
                 image,
             }).unwrap();
-            toast.success("Phone created successfully");
+            toast.success("Accessory created successfully");
             form.reset(); // Reset form after successful submission
         } catch (error) {
-            toast.error("Phone creation failed");
-            console.error("Error creating phone:", error);
+            toast.error("Accessory creation failed");
+            console.error("Error creating accessory:", error);
         }
     };
 
@@ -74,13 +86,43 @@ export default function CreatePhoneForm() {
         <div className="min-h-screen bg-black text-gray-100 p-8">
             <div className="max-w-2xl mx-auto">
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-white mb-2">Add New Phone</h1>
-                    <p className="text-gray-400">Fill in the details to add a new phone to CellMart inventory</p>
+                    <h1 className="text-3xl font-bold text-white mb-2">Add New Accessory</h1>
+                    <p className="text-gray-400">Fill in the details to add a new accessory to CellMart inventory</p>
                 </div>
 
                 <Form {...form}>
                     <div className="w-full">
                         <div className="grid gap-6">
+                            {/* Type */}
+                            <FormField
+                                control={form.control}
+                                name="type"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-gray-300">Type</FormLabel>
+                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                            <FormControl>
+                                                <SelectTrigger className="bg-white/5 border-gray-600 text-gray-100 focus:border-blue-500">
+                                                    <SelectValue placeholder="Select accessory type" />
+                                                </SelectTrigger>
+                                            </FormControl>
+                                            <SelectContent className="bg-gray-800 border-gray-600">
+                                                {accessoryTypes.map((type) => (
+                                                    <SelectItem 
+                                                        key={type.value} 
+                                                        value={type.value}
+                                                        className="text-gray-100 focus:bg-gray-700 focus:text-gray-100"
+                                                    >
+                                                        {type.label}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                        <FormMessage className="text-red-400" />
+                                    </FormItem>
+                                )}
+                            />
+
                             {/* Brand */}
                             <FormField
                                 control={form.control}
@@ -90,7 +132,7 @@ export default function CreatePhoneForm() {
                                         <FormLabel className="text-gray-300">Brand</FormLabel>
                                         <FormControl>
                                             <Input 
-                                                placeholder="e.g., Apple, Samsung, Google" 
+                                                placeholder="e.g., Apple, Samsung, Anker, JBL" 
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
@@ -109,7 +151,7 @@ export default function CreatePhoneForm() {
                                         <FormLabel className="text-gray-300">Model</FormLabel>
                                         <FormControl>
                                             <Input 
-                                                placeholder="e.g., iPhone 15 Pro Max, Samsung Galaxy S24 Ultra" 
+                                                placeholder="e.g., AirPods Pro 2, PowerCore 10000, USB-C Cable" 
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
@@ -125,11 +167,11 @@ export default function CreatePhoneForm() {
                                 name="price"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-gray-300">Price</FormLabel>
+                                        <FormLabel className="text-gray-300">Price (in cents)</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"
-                                                placeholder="e.g., 419900 LKR "
+                                                placeholder="e.g., 24900 (for $249.00)"
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 onChange={(e) => {
                                                     field.onChange(parseFloat(e.target.value) || 0);
@@ -138,7 +180,7 @@ export default function CreatePhoneForm() {
                                             />
                                         </FormControl>
                                         <FormDescription className="text-gray-500">
-                                            Enter price in LKR 
+                                            Enter price in cents (e.g., 24900 for $249.00)
                                         </FormDescription>
                                         <FormMessage className="text-red-400" />
                                     </FormItem>
@@ -154,7 +196,7 @@ export default function CreatePhoneForm() {
                                         <FormLabel className="text-gray-300">Key Features</FormLabel>
                                         <FormControl>
                                             <Textarea 
-                                                placeholder="Dynamic Island stays on top of it all,8GB RAM 256GB ROM,48MP Main |Ultra Wide | Telephoto,All-day battery life"
+                                                placeholder="Active Noise Cancellation,Wireless Charging Case,Up to 6 hours listening time,Spatial Audio support"
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 min-h-[100px]"
                                                 {...field} 
                                             />
@@ -176,57 +218,13 @@ export default function CreatePhoneForm() {
                                         <FormLabel className="text-gray-300">Detailed Description</FormLabel>
                                         <FormControl>
                                             <Textarea 
-                                                placeholder="Design: Aerospace-grade titanium body – strong and lightweight,Display: Large 6.7-inch Super Retina XDR OLED display..."
+                                                placeholder="Experience premium sound quality with advanced features. Perfect for music lovers and professionals..."
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 min-h-[120px]"
                                                 {...field} 
                                             />
                                         </FormControl>
                                         <FormDescription className="text-gray-500">
                                             Detailed product description that will appear on the product page.
-                                        </FormDescription>
-                                        <FormMessage className="text-red-400" />
-                                    </FormItem>
-                                )}
-                            />
-
-                            {/* Storage */}
-                            <FormField
-                                control={form.control}
-                                name="storage"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-gray-300">Storage Options</FormLabel>
-                                        <FormControl>
-                                            <Input 
-                                                placeholder="256GB,512GB,1TB" 
-                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
-                                                {...field} 
-                                            />
-                                        </FormControl>
-                                        <FormDescription className="text-gray-500">
-                                            Separate storage options with commas (e.g., 256GB,512GB,1TB)
-                                        </FormDescription>
-                                        <FormMessage className="text-red-400" />
-                                    </FormItem>
-                                )}
-                            />
-
-                            {/* Colors */}
-                            <FormField
-                                control={form.control}
-                                name="colors"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-gray-300">Available Colors</FormLabel>
-                                        <FormControl>
-                                            <Input 
-                                                placeholder="Blue titanium,Natural titanium,Titanium Black,White titanium" 
-                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
-                                                {...field} 
-                                            />
-                                        </FormControl>
-                                        <FormDescription className="text-gray-500">
-                                            Separate color options with commas
                                         </FormDescription>
                                         <FormMessage className="text-red-400" />
                                     </FormItem>
@@ -242,7 +240,7 @@ export default function CreatePhoneForm() {
                                         <FormLabel className="text-gray-300">Warranty</FormLabel>
                                         <FormControl>
                                             <Input 
-                                                placeholder="1 year Apple Care warranty" 
+                                                placeholder="1 year manufacturer warranty" 
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
@@ -261,13 +259,13 @@ export default function CreatePhoneForm() {
                                         <FormLabel className="text-gray-300">Image URL</FormLabel>
                                         <FormControl>
                                             <Input 
-                                                placeholder="https://example.com/phone-image.jpg" 
+                                                placeholder="https://example.com/accessory-image.jpg" 
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
                                         </FormControl>
                                         <FormDescription className="text-gray-500">
-                                            Enter a valid URL for the phone image
+                                            Enter a valid URL for the accessory image
                                         </FormDescription>
                                         <FormMessage className="text-red-400" />
                                     </FormItem>
@@ -275,14 +273,14 @@ export default function CreatePhoneForm() {
                             />
                         </div>
 
-                        <div className="mt-3 pt-3 border-t border-gray-800">
+                        <div className="mt-8 pt-6 border-t border-gray-800">
                             <Button 
                                 type="button"
                                 onClick={form.handleSubmit(handleSubmit)}
                                 disabled={isLoading}
                                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold disabled:opacity-50"
                             >
-                                {isLoading ? "Creating Phone..." : "Create Phone"}
+                                {isLoading ? "Creating Accessory..." : "Create Accessory"}
                             </Button>
                         </div>
                     </div>
