@@ -15,7 +15,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useState } from "react";
 
-export default function AdminPagePage() {
+export default function AdminPage() {
     const [phoneDialogOpen, setPhoneDialogOpen] = useState(false);
     const [accessoryDialogOpen, setAccessoryDialogOpen] = useState(false);
 

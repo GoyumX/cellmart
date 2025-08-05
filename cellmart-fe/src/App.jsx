@@ -12,12 +12,13 @@ import SignUpPage from "./pages/sign-up.page";
 import AccountPage from "./pages/account-page";
 import MobilePage from "./pages/mobile.page";
 import AccessoryPage from "./pages/accessory.page";
-import AdminPagePage from "./pages/admin.page";
+import AdminPage from "./pages/admin.page";
 import AllDevices from "./components/AllDevices";
 import AllAccessories from "./components/AllAccessories";
 import ScrollToTop from "./components/ScrollToTop";
 
 import { ClerkProvider } from "@clerk/clerk-react";
+import ReservationsPage from "./pages/reservations.page";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -40,7 +41,8 @@ function App() {
                 <Route element={<ProtectedLayout />}>
                   <Route path="/account" element={<AccountPage />} />
                   <Route element={<AdminProtectedLayout />}>
-                  <Route path="/admin" element={<AdminPagePage />} />
+                  <Route path="/admin" element={<AdminPage />} />
+                  <Route path="/admin/reservations" element={<ReservationsPage />} />            
                   </Route>
                 </Route>
               </Route>
