@@ -91,7 +91,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Input 
                                                 placeholder="e.g., Apple, Samsung, Google" 
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
                                         </FormControl>
@@ -110,7 +110,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Input 
                                                 placeholder="e.g., iPhone 15 Pro Max, Samsung Galaxy S24 Ultra" 
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
                                         </FormControl>
@@ -125,12 +125,12 @@ export default function CreatePhoneForm() {
                                 name="price"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-gray-300">Price (in cents)</FormLabel>
+                                        <FormLabel className="text-gray-300">Price</FormLabel>
                                         <FormControl>
                                             <Input
                                                 type="number"
                                                 placeholder="e.g., 419900 LKR "
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 onChange={(e) => {
                                                     field.onChange(parseFloat(e.target.value) || 0);
                                                 }}
@@ -155,7 +155,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Textarea 
                                                 placeholder="Dynamic Island stays on top of it all,8GB RAM 256GB ROM,48MP Main |Ultra Wide | Telephoto,All-day battery life"
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 min-h-[100px]"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 min-h-[100px]"
                                                 {...field} 
                                             />
                                         </FormControl>
@@ -177,7 +177,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Textarea 
                                                 placeholder="Design: Aerospace-grade titanium body – strong and lightweight,Display: Large 6.7-inch Super Retina XDR OLED display..."
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 min-h-[120px]"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500 min-h-[120px]"
                                                 {...field} 
                                             />
                                         </FormControl>
@@ -199,7 +199,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Input 
                                                 placeholder="256GB,512GB,1TB" 
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
                                         </FormControl>
@@ -221,7 +221,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Input 
                                                 placeholder="Blue titanium,Natural titanium,Titanium Black,White titanium" 
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
                                         </FormControl>
@@ -243,7 +243,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Input 
                                                 placeholder="1 year Apple Care warranty" 
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
                                         </FormControl>
@@ -262,7 +262,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Input 
                                                 placeholder="" 
-                                                className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                                className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 {...field} 
                                             />
                                         </FormControl>

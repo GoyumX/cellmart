@@ -82,7 +82,7 @@ const ReservationForm = (props) => {
                     
                     <div className="space-y-2">
                         <label className="block text-sm font-medium text-gray-300">Email Address</label>
-                        <div className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-gray-300">
+                        <div className="w-full px-3 py-2 bg-white/5  border border-gray-600 rounded-md text-gray-300">
                             {userEmail || "No email found"}
                         </div>
                         <p className="text-xs text-gray-500">This email will be used for reservation updates</p>
@@ -98,7 +98,7 @@ const ReservationForm = (props) => {
                                     <Input 
                                         type="text"
                                         placeholder="Enter your full name"
-                                        className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                        className="bg-white/5  border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                         {...field}
                                     />
                                 </FormControl>
@@ -117,7 +117,7 @@ const ReservationForm = (props) => {
                                     <Input 
                                         type="tel"
                                         placeholder="Enter your contact number"
-                                        className="bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
+                                        className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                         {...field}
                                     />
                                 </FormControl>
@@ -129,7 +129,7 @@ const ReservationForm = (props) => {
                         )}
                     />
 
-                    <div className="bg-gray-800 p-4 rounded-md border border-gray-700">
+                    <div className="bg-white/5  p-4 rounded-md border border-gray-700">
                         <h3 className="text-sm font-medium text-gray-300 mb-2">What happens next?</h3>
                         <ul className="text-xs text-gray-400 space-y-1">
                             <li>• We'll contact you within 24 hours to confirm availability</li>

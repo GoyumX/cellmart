@@ -39,7 +39,7 @@ function App() {
                 <Route path="/accessory/:id" element={<AccessoryPage/>}/>
                 <Route element={<ProtectedLayout />}>
                   <Route path="/account" element={<AccountPage />} />
-                  <Route element={<ProtectedLayout />}>
+                  <Route element={<AdminProtectedLayout />}>
                   <Route path="/admin" element={<AdminPagePage />} />
                   </Route>
                 </Route>

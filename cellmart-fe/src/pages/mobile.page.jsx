@@ -106,7 +106,7 @@ const PhonePage = () => {
   const colorOptions = phone.colors.split(',').map(c => c.trim());
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
+    <div className="min-h-screen bg-black text-gray-100">
       <div className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-4">
@@ -116,7 +116,7 @@ const PhonePage = () => {
                 alt={`${phone.brand} ${phone.model}`}
                 className="absolute inset-0 w-full h-full object-contain p-4"/>
             </div>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 bg-gray-900 rounded-lg border border-gray-800 gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-6 bg-white/5  rounded-lg border border-gray-800 gap-4">
               <div>
                 <p className="text-2xl sm:text-3xl font-bold text-white">{formatPrice(phone.price)}</p>
                 <p className="text-xs sm:text-sm text-gray-400">One-time payment</p>
@@ -131,7 +131,7 @@ const PhonePage = () => {
                   <DialogTrigger asChild>
                     <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">Reserve Accessory</Button>
                   </DialogTrigger>
-                  <DialogContent className="bg-gray-900 border-gray-800 text-gray-100 max-w-sm sm:max-w-md">
+                  <DialogContent className="bg-black border-gray-800 text-gray-100 max-w-sm sm:max-w-md">
                     <DialogHeader>
                       <DialogTitle className="text-white text-lg sm:text-xl">Reserve Your Accessory</DialogTitle>
                       <DialogDescription className="text-gray-400">
@@ -167,7 +167,7 @@ const PhonePage = () => {
 
             <p className="text-gray-300">{phone.description}</p>
 
-            <Card className="bg-gray-900 border-gray-800">
+            <Card className="bg-white/5  border-gray-800">
               <CardContent className="p-4">
                 <h2 className="text-xl font-semibold mb-4 text-white">Key Features</h2>
                 <div className="space-y-3">
@@ -181,7 +181,7 @@ const PhonePage = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-900 border-gray-800">
+            <Card className="bg-white/5  border-gray-800">
               <CardContent className="p-4">
                 <div className="flex items-center mb-3">
                   <HardDrive className="h-5 w-5 mr-2 text-gray-400" />
@@ -200,7 +200,7 @@ const PhonePage = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-900 border-gray-800">
+            <Card className="bg-white/5  border-gray-800">
               <CardContent className="p-4">
                 <div className="flex items-center mb-3">
                   <Palette className="h-5 w-5 mr-2 text-gray-400" />
@@ -219,7 +219,7 @@ const PhonePage = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-gray-900 border-gray-800">
+            <Card className="bg-white/5  border-gray-800">
               <CardContent className="p-4">
                 <h2 className="text-xl font-semibold mb-4 text-white">Specifications</h2>
                 <div className="grid grid-cols-2 gap-4">
