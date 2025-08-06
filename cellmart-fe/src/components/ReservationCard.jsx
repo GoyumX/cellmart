@@ -10,9 +10,6 @@ const ReservationCard = ({ reservation, productData, onDelete, isLoading }) => {
     const isPhone = reservation.productType === "Phone";
     const product = productData;
 
-    const formatPrice = (price) => {
-        return `$${(price / 100).toFixed(2)}`;
-    };
 
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to cancel this reservation?")) {
@@ -92,13 +89,16 @@ const ReservationCard = ({ reservation, productData, onDelete, isLoading }) => {
                     
                     <div className="flex-1 space-y-3">
                         <div>
-                            <p className="text-2xl font-bold text-green-600">
-                                {formatPrice(product.price)}
-                            </p>
+                                <div>
+                                <p className="text-2xl font-bold text-green-600">
+                                    Rs. {Number(product.price).toLocaleString('en-LK')}
+                                </p>
+                                <p className="text-sm text-gray-500 mt-1">Reserved Product</p>
+                                </div>
                             <p className="text-sm text-gray-500 mt-1">Reserved Product</p>
                         </div>
                         
-                        {/* Key Features */}
+                        {/* Key Features     mobile responsiveness fixedd*/}
                         {product.pointdesc && (
                             <div>
                                 <p className="text-sm font-medium text-gray-700 mb-2">Key Features:</p>
@@ -107,7 +107,7 @@ const ReservationCard = ({ reservation, productData, onDelete, isLoading }) => {
                                         <Badge
                                             key={index}
                                             variant="outline"
-                                            className="text-xs bg-blue-50 border-blue-200 text-blue-700"
+                                            className="text-xs bg-blue-50 border-blue-200 text-blue-700 break-words max-w-full whitespace-normal p-2 leading-tight text-wrap sm:max-w-[45%] md:max-w-none"
                                         >
                                             {feature.trim()}
                                         </Badge>
