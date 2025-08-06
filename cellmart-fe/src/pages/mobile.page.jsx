@@ -129,16 +129,16 @@ const PhonePage = () => {
               <SignedIn>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">Reserve Accessory</Button>
+                    <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">Reserve Mobile Device</Button>
                   </DialogTrigger>
                   <DialogContent className="bg-black border-gray-800 text-gray-100 max-w-sm sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle className="text-white text-lg sm:text-xl">Reserve Your Accessory</DialogTitle>
+                      <DialogTitle className="text-white text-lg sm:text-xl">Reserve Your Mobile Device</DialogTitle>
                       <DialogDescription className="text-gray-400">
                         Fill in your details and we'll contact you within 24 hours to complete your reservation.
                       </DialogDescription>
                     </DialogHeader>
-                    <ReservationForm accessoryId={id}/>
+                    <ReservationForm phoneId={id}/>
                   </DialogContent>
                 </Dialog>
               </SignedIn>
