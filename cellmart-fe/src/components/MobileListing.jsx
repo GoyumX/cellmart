@@ -24,7 +24,7 @@ export default function MobileListings() {
       <section className="px-8 py-8 lg:py-12">
         <div className="mb-5">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Top trending mobile phones
+            Top trending Mobile Phones
           </h2>
           <p className="text-lg text-muted-foreground">
             Discover the prefect mobile phone for you
