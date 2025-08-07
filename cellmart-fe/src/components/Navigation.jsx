@@ -11,12 +11,9 @@ function Navigation() {
     <nav className="z-10 bg-black flex items-center justify-between px-4 sm:px-6 lg:px-8 text-white py-3 sm:py-4">
       <div className="flex items-center space-x-4 sm:space-x-8">
         <Link to="/" className="text-xl sm:text-2xl font-bold">
-          Cellmart
+          CELLMART
         </Link>
         <div className="hidden md:flex space-x-6">
-          <Link to={`/`} className="transition-colors">
-            Home
-          </Link>
           <SignedIn>
           {user?.publicMetadata?.role === "admin" && (<Link to={`/admin`} className="transition-colors">
           Admin Panel </Link>)}

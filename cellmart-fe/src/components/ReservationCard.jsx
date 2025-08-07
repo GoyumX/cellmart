@@ -56,7 +56,7 @@ const ReservationCard = ({ reservation, productData, onDelete, isLoading }) => {
                             <h3 className="text-lg font-semibold text-gray-900">
                                 {product.brand} {product.model}
                             </h3>
-                            <Badge variant={isPhone ? "default" : "secondary"} className="text-xs">
+                            <Badge  className="text-xs">
                                 {reservation.productType}
                             </Badge>
                         </div>
@@ -95,7 +95,6 @@ const ReservationCard = ({ reservation, productData, onDelete, isLoading }) => {
                                 </p>
                                 <p className="text-sm text-gray-500 mt-1">Reserved Product</p>
                                 </div>
-                            <p className="text-sm text-gray-500 mt-1">Reserved Product</p>
                         </div>
                         
                         {/* Key Features     mobile responsiveness fixedd*/}
