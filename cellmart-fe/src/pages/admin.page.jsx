@@ -1,5 +1,5 @@
-import AllAccessories from "@/components/AllAccessories";
-import AllDevices from "@/components/AllDevices";
+import AllAccessories from "@/pages/accessories.page";
+import AllDevices from "@/pages/mobiles.page";
 import CreatePhoneForm from "@/components/CreatePhoneForm";
 import CreateAccessoryForm from "@/components/CreateAccessoryForm";
 import { Button } from "@/components/ui/button"

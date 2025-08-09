@@ -1,5 +1,5 @@
-import ProductCard from "./ProductCard";
-import BrandTab from "./BrandTab";
+import ProductCard from "../components/ProductCard";
+import BrandTab from "../components/BrandTab";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { useGetPhonesQuery } from "@/lib/api";
@@ -147,7 +147,7 @@ export default function AllDevices() {
           All Mobile Devices
         </h2>
         <p className="text-lg text-muted-foreground">
-          Discover all available mobile phones in our collection. Browse through our extensive range of smartphones from top brands.
+          Discover all available mobile phones in our collection. 
         </p>
       </div>
       

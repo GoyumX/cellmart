@@ -1,5 +1,5 @@
-import ProductCard from "./ProductCard";
-import BrandTab from "./BrandTab";
+import ProductCard from "../components/ProductCard";
+import BrandTab from "../components/BrandTab";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { useGetAccessoriesQuery } from "@/lib/api";
@@ -146,7 +146,7 @@ export default function AllAccessories() {
           All Accessories
         </h2>
         <p className="text-lg text-muted-foreground">
-          Choose from our complete collection of mobile accessories. From earbuds to powerbanks, find everything you need for your devices.
+          Choose from our complete collection of mobile accessories
         </p>
       </div>
       

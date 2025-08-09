@@ -13,8 +13,8 @@ import AccountPage from "./pages/account-page";
 import MobilePage from "./pages/mobile.page";
 import AccessoryPage from "./pages/accessory.page";
 import AdminPage from "./pages/admin.page";
-import AllDevices from "./components/AllDevices";
-import AllAccessories from "./components/AllAccessories";
+import MobilesPage from "./pages/mobiles.page";
+import AccessoriesPage from "./pages/accessories.page";
 import ScrollToTop from "./components/ScrollToTop";
 
 import { ClerkProvider } from "@clerk/clerk-react";
@@ -34,8 +34,8 @@ function App() {
             <Route element={<RootLayout />}>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/phones" element={<AllDevices />} />
-                <Route path="/accessories" element={<AllAccessories />} />
+                <Route path="/phones" element={<MobilesPage />} />
+                <Route path="/accessories" element={<AccessoriesPage />} />
                 <Route path="/mobile/:id" element={<MobilePage />} />
                 <Route path="/accessory/:id" element={<AccessoryPage/>}/>
                 <Route element={<ProtectedLayout />}>
