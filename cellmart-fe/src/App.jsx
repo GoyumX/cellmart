@@ -34,7 +34,7 @@ function App() {
             <Route element={<RootLayout />}>
               <Route element={<MainLayout />}>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/devices" element={<AllDevices />} />
+                <Route path="/phones" element={<AllDevices />} />
                 <Route path="/accessories" element={<AllAccessories />} />
                 <Route path="/mobile/:id" element={<MobilePage />} />
                 <Route path="/accessory/:id" element={<AccessoryPage/>}/>

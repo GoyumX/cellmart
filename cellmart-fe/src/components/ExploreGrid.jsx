@@ -23,7 +23,7 @@ export default function ExploreGrid() {
                 asChild
                 className="bg-white text-black hover:bg-white/90 rounded-full w-full sm:w-auto px-6 py-2 flex items-center justify-center gap-2 z-0"
               >
-                <Link to="/devices">
+                <Link to="/phones">
                   Show All Devices
                   <ArrowRight />
                 </Link>

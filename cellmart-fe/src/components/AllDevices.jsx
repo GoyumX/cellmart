@@ -1,6 +1,7 @@
 import ProductCard from "./ProductCard";
 import BrandTab from "./BrandTab";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import { useGetPhonesQuery } from "@/lib/api";
 import {
   Select,
@@ -9,17 +10,25 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect } from "react";
+// removed unused useEffect import
 
 
 
 export default function AllDevices() {
   const { data: mobiles, isLoading, isError, error } = useGetPhonesQuery();
-  
+
   const brands = ["ALL", "Apple", "Samsung", "Google", "Oneplus", "Redmi"];
-  
-  const [selectedBrand, setSelectedBrand] = useState("ALL");
+
+  const [searchParams] = useSearchParams();
+  const initialBrand = searchParams.get("brand") || "ALL";
+
+  const [selectedBrand, setSelectedBrand] = useState(initialBrand);
   const [sortOrder, setSortOrder] = useState("default");
+
+  useEffect(() => {
+    const brandFromUrl = searchParams.get("brand") || "ALL";
+    setSelectedBrand(brandFromUrl);
+  }, [searchParams]);
 
   const handleSelectedBrand = (brand) => {
     setSelectedBrand(brand);
@@ -43,8 +52,6 @@ export default function AllDevices() {
     } else if (sortOrder === "high-to-low") {
       return parseFloat(b.price) - parseFloat(a.price);
     }
-
-
 
     return 0; 
   }) : [];

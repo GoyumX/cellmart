@@ -1,6 +1,7 @@
 import ProductCard from "./ProductCard";
 import BrandTab from "./BrandTab";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router";
 import { useGetAccessoriesQuery } from "@/lib/api";
 import {
   Select,
@@ -9,16 +10,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect } from "react";
+// removed unused useEffect import
 
 
 export default function AllAccessories() {
   const { data: accessories, isLoading, isError, error } = useGetAccessoriesQuery();
-  
+
   const types = ["ALL", "Earbuds", "Bluetooth Speakers", "Cables", "Chargers", "Powerbanks"];
-  
-  const [selectedType, setSelectedType] = useState("ALL");
+
+  const [searchParams] = useSearchParams();
+  const initialType = searchParams.get("type") || "ALL";
+
+  const [selectedType, setSelectedType] = useState(initialType);
   const [sortOrder, setSortOrder] = useState("default");
+
+  useEffect(() => {
+    const typeFromUrl = searchParams.get("type") || "ALL";
+    setSelectedType(typeFromUrl);
+  }, [searchParams]);
 
   const handleSelectedType = (type) => {
     setSelectedType(type);
