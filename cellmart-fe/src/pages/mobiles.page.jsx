@@ -10,51 +10,86 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-// removed unused useEffect import
-
-
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 export default function AllDevices() {
   const { data: mobiles, isLoading, isError, error } = useGetPhonesQuery();
 
   const brands = ["ALL", "Apple", "Samsung", "Google", "Oneplus", "Redmi"];
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const initialBrand = searchParams.get("brand") || "ALL";
+  const initialPage = parseInt(searchParams.get("page")) || 1;
 
   const [selectedBrand, setSelectedBrand] = useState(initialBrand);
   const [sortOrder, setSortOrder] = useState("default");
+  const [page, setPage] = useState(initialPage);
+  
+  const limit = 12;
 
   useEffect(() => {
     const brandFromUrl = searchParams.get("brand") || "ALL";
+    const pageFromUrl = parseInt(searchParams.get("page")) || 1;
     setSelectedBrand(brandFromUrl);
+    setPage(pageFromUrl);
   }, [searchParams]);
 
   const handleSelectedBrand = (brand) => {
     setSelectedBrand(brand);
+    setPage(1); 
+
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("brand", brand);
+    newParams.set("page", "1");
+    setSearchParams(newParams);
   };
 
   const handleSortChange = (value) => {
     setSortOrder(value);
+    setPage(1); 
+    
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("page", "1");
+    setSearchParams(newParams);
   };
 
-  
+  const handlePageChange = (newPage) => {
+    setPage(newPage);
+    
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set("page", newPage.toString());
+    setSearchParams(newParams);
+    
+  };
+
   const filteredMobiles = selectedBrand === "ALL" 
     ? mobiles 
     : mobiles?.filter((mobile) => 
         mobile.brand.toLowerCase().includes(selectedBrand.toLowerCase())
       );
 
- 
+  // Sort filter
   const sortedMobiles = filteredMobiles ? [...filteredMobiles].sort((a, b) => {
     if (sortOrder === "low-to-high") {
       return parseFloat(a.price) - parseFloat(b.price);
     } else if (sortOrder === "high-to-low") {
       return parseFloat(b.price) - parseFloat(a.price);
     }
-
-    return 0; 
+    return 0;
   }) : [];
+
+  // Calculate pagination
+  const total = sortedMobiles.length;
+  const totalPages = Math.ceil(total / limit);
+  const startIndex = (page - 1) * limit;
+  const currentItems = sortedMobiles.slice(startIndex, startIndex + limit);
 
   if (isLoading) {
     return (
@@ -147,12 +182,11 @@ export default function AllDevices() {
           All Mobile Devices
         </h2>
         <p className="text-lg text-muted-foreground">
-          Discover all available mobile phones in our collection. 
+          Discover all available mobile phones in our collection
         </p>
       </div>
       
       <div className="mb-4 flex flex-col md:flex-row justify-between gap-4">
-        
         <div className="flex items-center gap-2 flex-wrap">
           {brands.map((brand) => (
             <BrandTab 
@@ -164,7 +198,6 @@ export default function AllDevices() {
           ))}
         </div>
         
-       
         <div className="w-full md:w-48">
           <Select value={sortOrder} onValueChange={handleSortChange}>
             <SelectTrigger>
@@ -179,15 +212,65 @@ export default function AllDevices() {
         </div>
       </div>
 
+      {/* Results count */}
+      <div className="mb-4 flex justify-between items-center">
+        <h2 className="text-xl font-semibold">
+          {isLoading 
+            ? "Loading..." 
+            : `${total} ${total === 1 ? "device" : "devices"} found`
+          }
+        </h2>
+      </div>
+
+      {/* Products grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
-        {sortedMobiles.length > 0 ? (
-          sortedMobiles.map((product) => (
+        {currentItems.length > 0 ? (
+          currentItems.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))
         ) : (
-          <p>No devices found for this brand.</p>
+          <div className="col-span-4 text-center py-12 border rounded-lg">
+            <h3 className="text-lg font-medium mb-2">No devices found</h3>
+            <p className="text-muted-foreground">
+              Try selecting a different brand or adjusting your filters
+            </p>
+          </div>
         )}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="mt-8 w-full mx-auto">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  onClick={() => handlePageChange(Math.max(page - 1, 1))}
+                  className={page === 1 ? "pointer-events-none opacity-50" : ""}
+                />
+              </PaginationItem>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                <PaginationItem key={pageNum}>
+                  <PaginationLink
+                    onClick={() => handlePageChange(pageNum)}
+                    isActive={page === pageNum}
+                  >
+                    {pageNum}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() => handlePageChange(Math.min(page + 1, totalPages))}
+                  className={page === totalPages ? "pointer-events-none opacity-50" : ""}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </section>
   );
 }
