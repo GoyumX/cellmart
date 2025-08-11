@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/dialog"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { useState } from "react";
+import { Link } from "react-router";
 
 export default function AdminPagePage() {
     const [phoneDialogOpen, setPhoneDialogOpen] = useState(false);
@@ -55,7 +56,13 @@ export default function AdminPagePage() {
                             </div>
                         </ScrollArea>
                     </DialogContent>
-                </Dialog>
+                </Dialog>           
+                
+                    <Button variant="default" className="w-full sm:w-auto" asChild>
+                        <Link to="/admin/reservations">
+                            View Reservations
+                        </Link>
+                    </Button>
             </div>
 
             <AllDevices/>
