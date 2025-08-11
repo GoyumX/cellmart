@@ -7,14 +7,15 @@ import {
     updateAccessories
 } from "../application/accessories";
 import { isAuthenticated } from "./middleware/authentication-middleware";
+import { isAdmin } from "./middleware/authorization-middleware";
 
 const AccessoriesRouter = express.Router();
 
-AccessoriesRouter.route("/").get(getAllAccessories).post(createAccessories, isAuthenticated);
+AccessoriesRouter.route("/").get(getAllAccessories).post(createAccessories, isAuthenticated, isAdmin);
 AccessoriesRouter
     .route("/:id")
     .get(getAccessoriesById)
-    .put(updateAccessories)
-    .delete(deleteAccessories);
+    .put(updateAccessories, isAuthenticated, isAdmin)
+    .delete(deleteAccessories, isAuthenticated, isAdmin);
 
 export default AccessoriesRouter;
