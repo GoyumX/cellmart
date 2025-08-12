@@ -27,7 +27,7 @@ export default function AdminSearchFilters({
                             className="pl-10 bg-white/6 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                         />
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-3 flex-wrap">
                         <Button
                             variant={filterType === "all" ? "secondary" : "default"}
                             onClick={() => setFilterType("all")}
@@ -57,7 +57,7 @@ export default function AdminSearchFilters({
                 </div>
                 {searchTerm && (
                     <p className="text-sm text-gray-400 mt-2">
-                        Showing results for "{searchTerm}"
+                        Showing results for "{searchTerm}" 
                     </p>
                 )}
             </CardContent>

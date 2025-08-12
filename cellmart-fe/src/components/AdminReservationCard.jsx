@@ -103,13 +103,13 @@ export default function AdminReservationCard({ reservation, productData, onDelet
                             </div>
                         </div>
                         <div className="space-y-1 sm:col-span-2 lg:col-span-1">
-                            <p className="text-xs text-gray-400 uppercase tracking-wide">User ID</p>
+                            <p className="text-xs text-gray-400 uppercase tracking-wide text-wrap">User ID</p>
                             <p className="text-gray-300 font-mono text-sm bg-gray-700 px-2 py-1 rounded">
                                 {reservation.userId}
                             </p>
                         </div>
                         <div className="space-y-1 sm:col-span-2 lg:col-span-1">
-                            <p className="text-xs text-gray-400 uppercase tracking-wide">Reservation ID</p>
+                            <p className="text-xs text-gray-400 uppercase tracking-wide ">Reservation ID</p>
                             <p className="text-gray-300 font-mono text-sm bg-gray-700 px-2 py-1 rounded">
                                 {reservation._id}
                             </p>
@@ -143,9 +143,9 @@ export default function AdminReservationCard({ reservation, productData, onDelet
                                         <Badge
                                             key={index}
                                             variant="outline"
-                                            className="text-xs bg-gray-800 border-gray-600 text-gray-300"
+                                            className="text-xs bg-gray-800 border-gray-600 text-gray-300 break-words max-w-full whitespace-normal leading-tight text-wrap"
                                         >
-                                            {feature.trim()}
+                                            {feature.trim()} {/*  p-2   sm:max-w-[45%] md:max-w-none*/}
                                         </Badge>
                                     ))}
                                 </div>

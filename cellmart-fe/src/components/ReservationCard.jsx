@@ -100,7 +100,7 @@ const ReservationCard = ({ reservation, productData, onDelete, isLoading }) => {
                         {/* Key Features     mobile responsiveness fixedd*/}
                         {product.pointdesc && (
                             <div>
-                                <p className="text-sm font-medium text-gray-700 mb-2">Key Features:</p>
+                                <p className="text-sm font-medium text-gray-700 items-center mb-2">Key Features:</p>
                                 <div className="flex flex-wrap gap-1">
                                     {product.pointdesc.split(',').slice(0, 4).map((feature, index) => (
                                         <Badge
