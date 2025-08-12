@@ -1,5 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import Reservation from "../infastructure/schemas/Reservation";
+import NotFoundError from "../domain/errors/not-found-error";
+import ValidationError from "../domain/errors/validation-error";
+import { ReservationDTO } from "../domain/dtos/reservation";
+
 
 // Extend Express Request interface to include auth property
 declare global {
@@ -20,7 +24,7 @@ declare global {
 export const getAllReservations = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const reservations = await Reservation.find();
-        res.json(reservations);
+        res.status(200).json(reservations);
     } catch (error) {
         next(error);
     }
@@ -31,9 +35,10 @@ export const getReservationById = async (req: Request, res: Response, next: Next
         const reservationid = req.params.id;
         const reservation = await Reservation.findById(reservationid).populate('productId');
         if (!reservation) {
-            return res.status(404).json({ message: "Reservation not found" });
+            throw new NotFoundError("Reservation not found");
         }
-        res.json(reservation);
+        res.status(200).json(reservation);
+        return;
     } catch (error) {
         next(error);
     }
@@ -43,7 +48,7 @@ export const deleteReservation = async (req: Request, res: Response, next: NextF
     try {
         const reservationid = req.params.id;
         const deleted = await Reservation.findByIdAndDelete(reservationid);
-        res.json({ message: "Reservation deleted" });
+        res.status(200).json({ message: "Reservation deleted" });
     } catch (error) {
         next(error);
     }
