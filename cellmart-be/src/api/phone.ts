@@ -11,11 +11,11 @@ import { isAdmin } from "./middleware/authorization-middleware";
 
 const phoneRouter = express.Router();
 
-phoneRouter.route("/").get(getAllPhone).post(createPhone, isAuthenticated, isAdmin);
+phoneRouter.route("/").get(getAllPhone).post(isAuthenticated, isAdmin ,createPhone);
 phoneRouter
     .route("/:id")
     .get(getPhoneById)
-    .put(updatePhone, isAuthenticated, isAdmin)
-    .delete(deletePhone, isAuthenticated, isAdmin);
+    .put(isAuthenticated, isAdmin, updatePhone)
+    .delete(isAuthenticated, isAdmin,deletePhone);
 
 export default phoneRouter;

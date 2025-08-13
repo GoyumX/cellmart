@@ -10,10 +10,10 @@ import { isAdmin } from "./middleware/authorization-middleware";
 
 const reservationRouter = express.Router();
 
-reservationRouter.route("/").get(getAllReservations, isAuthenticated).post(createReservation, isAuthenticated);
+reservationRouter.route("/").get(isAuthenticated, getAllReservations).post(isAuthenticated, createReservation);
 reservationRouter
     .route("/:id")
-    .get(getReservationById, isAuthenticated)
-    .delete(deleteReservation, isAuthenticated, isAdmin);
+    .get( isAuthenticated, getReservationById)
+    .delete( isAuthenticated, deleteReservation);
 
 export default reservationRouter;

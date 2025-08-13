@@ -11,11 +11,11 @@ import { isAdmin } from "./middleware/authorization-middleware";
 
 const AccessoriesRouter = express.Router();
 
-AccessoriesRouter.route("/").get(getAllAccessories).post(createAccessories, isAuthenticated, isAdmin);
+AccessoriesRouter.route("/").get(getAllAccessories).post(isAuthenticated, isAdmin, createAccessories);
 AccessoriesRouter
     .route("/:id")
     .get(getAccessoriesById)
-    .put(updateAccessories, isAuthenticated, isAdmin)
-    .delete(deleteAccessories, isAuthenticated, isAdmin);
+    .put(isAuthenticated, isAdmin, updateAccessories)
+    .delete(isAuthenticated, isAdmin, deleteAccessories);
 
 export default AccessoriesRouter;
