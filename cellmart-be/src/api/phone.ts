@@ -4,7 +4,8 @@ import {
     getPhoneById,
     getAllPhone,
     deletePhone,
-    updatePhone
+    updatePhone,
+    generateResponse
 } from "../application/phone";
 import { isAuthenticated } from "./middleware/authentication-middleware";
 import { isAdmin } from "./middleware/authorization-middleware";
@@ -17,5 +18,6 @@ phoneRouter
     .get(getPhoneById)
     .put(isAuthenticated, isAdmin, updatePhone)
     .delete(isAuthenticated, isAdmin,deletePhone);
+phoneRouter.route("/llm").post(generateResponse);
 
 export default phoneRouter;
