@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Search, Sparkles, Smartphone, ArrowRight, Zap } from "lucide-react";
+import {  Sparkles, ArrowRight, Zap } from "lucide-react";
 
 export default function Hero() {
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("Search");
+    const searachQuery = e.target.search.value;
+    console.log(searachQuery);
   };
 
   return (
@@ -272,21 +273,24 @@ export default function Hero() {
                 
                 <div className="input-container">
                   
+                <form className="search-input" onSubmit={handleSearch}>
+
                   <input
                     type="text"
+                    name="search"
                     placeholder="I need a phone with excellent camera, long battery life, under 150,000 LKR ..."
                     className="search-input pl-16 sm:pl-20 pr-20 sm:pr-52 text-sm sm:text-base"
                   />
                   
                   <Button
                     type="submit"
-                    onClick={handleSearch}
                     className="search-button rounded-full w-20 sm:w-32 md:w-48 h-[calc(100%-16px)] flex items-center gap-1 sm:gap-2 hover:bg-gray-600 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse text-sky-500" />
                     <span className="hidden sm:inline text-sm sm:text-lg">AI Search</span>
                     <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 sm:hidden" />
                   </Button>
+                  </form>
                 </div>
               </div>
             </div>
