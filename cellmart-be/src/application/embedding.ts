@@ -12,7 +12,7 @@ export const createEmbeddings = async (
 ) => {
   try {
     const embeddingsModel = new OpenAIEmbeddings({
-      model: "text-embedding-3-large",
+      model: "text-embedding-3-small",
       apiKey: process.env.OPENAI_API_KEY,
     });
 
