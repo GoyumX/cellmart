@@ -3,7 +3,7 @@ import NotFoundError from "../domain/errors/not-found-error";
 import ValidationError from "../domain/errors/validation-error";
 import { PhoneDTO } from "../domain/dtos/phone";
 
-import Phone from "../infastructure/schemas/Phone";
+import Phone from "../infrastructure/schemas/Phone";
 
 import OpenAI from "openai";
 

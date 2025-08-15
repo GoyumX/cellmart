@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import connectDB from "./infastructure/db";
+import connectDB from "./infrastructure/db";
 
 import cors from "cors";
 

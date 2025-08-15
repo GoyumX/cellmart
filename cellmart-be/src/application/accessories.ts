@@ -3,7 +3,7 @@ import NotFoundError from "../domain/errors/not-found-error";
 import ValidationError from "../domain/errors/validation-error";
 import { AccessoryDTO } from "../domain/dtos/accessory";
 
-import Accessories from "../infastructure/schemas/Accessories"
+import Accessories from "../infrastructure/schemas/Accessories"
 
 export const getAllAccessories = async (req : Request, res: Response, next:NextFunction) => {
   try{

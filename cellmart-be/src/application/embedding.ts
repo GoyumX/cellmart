@@ -3,7 +3,7 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { Document } from "@langchain/core/documents";
 import { MongoDBAtlasVectorSearch } from "@langchain/mongodb";
 import mongoose from "mongoose";
-import Phone from "../infastructure/schemas/Phone";
+import Phone from "../infrastructure/schemas/Phone";
 
 export const createEmbeddings = async (
   req: Request,

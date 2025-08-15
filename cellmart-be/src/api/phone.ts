@@ -7,7 +7,6 @@ import {
     updatePhone,
     generateResponse
 } from "../application/phone";
-import { createEmbeddings } from "../application/embedding";
 import { isAuthenticated } from "./middleware/authentication-middleware";
 import { isAdmin } from "./middleware/authorization-middleware";
 

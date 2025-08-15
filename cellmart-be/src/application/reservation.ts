@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Reservation from "../infastructure/schemas/Reservation";
+import Reservation from "../infrastructure/schemas/Reservation";
 import NotFoundError from "../domain/errors/not-found-error";
 import ValidationError from "../domain/errors/validation-error";
 import { ReservationDTO } from "../domain/dtos/reservation";
