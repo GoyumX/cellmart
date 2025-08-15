@@ -19,7 +19,5 @@ phoneRouter
     .get(getPhoneById)
     .put(isAuthenticated, isAdmin, updatePhone)
     .delete(isAuthenticated, isAdmin,deletePhone);
-phoneRouter.route("/llm").post(generateResponse);
-phoneRouter.route("/embeddings/create").post(createEmbeddings)
 
 export default phoneRouter;
