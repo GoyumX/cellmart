@@ -120,7 +120,7 @@ export default function AllAccessories() {
                 <SelectValue placeholder="Sort by price" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="default">Default</SelectItem>
+                <SelectItem value="default">Select Price Order</SelectItem>
                 <SelectItem value="low-to-high">Price: Low to High</SelectItem>
                 <SelectItem value="high-to-low">Price: High to Low</SelectItem>
               </SelectContent>
@@ -162,7 +162,7 @@ export default function AllAccessories() {
                 <SelectValue placeholder="Sort by price" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="default">Default</SelectItem>
+                <SelectItem value="default">Select Price Order</SelectItem>
                 <SelectItem value="low-to-high">Price: Low to High</SelectItem>
                 <SelectItem value="high-to-low">Price: High to Low</SelectItem>
               </SelectContent>
@@ -205,7 +205,7 @@ export default function AllAccessories() {
               <SelectValue placeholder="Sort by price" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="default">Default</SelectItem>
+              <SelectItem value="default">Select Price Order</SelectItem>
               <SelectItem value="low-to-high">Price: Low to High</SelectItem>
               <SelectItem value="high-to-low">Price: High to Low</SelectItem>
             </SelectContent>
