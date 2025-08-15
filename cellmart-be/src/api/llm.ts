@@ -9,6 +9,6 @@ const llmRouter = express.Router();
 
 llmRouter.route("/chat").post(generateResponse);
 llmRouter.route("/embeddings/create").post(createEmbeddings);
-llmRouter.route("/search/retrieve").get(retrieve);
+llmRouter.route("/search/retrieve").post(retrieve);
 
 export default llmRouter;

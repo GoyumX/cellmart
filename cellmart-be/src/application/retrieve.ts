@@ -10,7 +10,7 @@ export const retrieve = async (
   next: NextFunction
 ) => {
   try {
-    const { query } = req.query;
+    const { query } = req.body;
     if (!query || query === "") {
       const devices = (await Phone.find()).map((phone) => ({
         phone: phone,
