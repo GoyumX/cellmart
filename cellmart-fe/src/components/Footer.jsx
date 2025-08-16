@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { SocialIcon } from 'react-social-icons'
+import { Link } from "react-router";
 
 import { Facebook, Instagram, Twitter, MessageCircle, Smartphone, Mail, ArrowUp, } from "lucide-react"
 
@@ -44,18 +45,18 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               {[
-                { name: "About Us", href: "/about" },
-                { name: "Our Story", href: "/story" },
-                { name: "Careers", href: "/career" },
-                { name: "Blog", href: "/blog" }
+                { name: "About Us", href: "/comingsoon" },
+                { name: "Our Story", href: "/comingsoon" },
+                { name: "Careers", href: "/comingsoon" },
+                { name: "Blog", href: "/comingsoon" }
               ].map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <Link 
+                    to={link.href} 
                     className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block group text-sm sm:text-base"
                   >
                     <span className="group-hover:text-white">{link.name}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -68,17 +69,17 @@ export default function Footer() {
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               {[
-                { name: "Contact Us", href: "/contact" },
-                { name: "Returns & Exchanges", href: "/return" },
-                { name: "FAQ", href: "/faq" }
+                { name: "Contact Us", href: "/comingsoon" },
+                { name: "Returns & Exchanges", href: "/comingsoon" },
+                { name: "FAQ", href: "/comingsoon" }
               ].map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <Link 
+                    to={link.href} 
                     className="text-gray-400 hover:text-white transition-all duration-300 hover:translate-x-1 inline-block group text-sm sm:text-base"
                   >
                     <span className="group-hover:text-white">{link.name}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -109,10 +110,10 @@ export default function Footer() {
             
             <div className="flex items-center gap-4 sm:gap-6">
               <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm">
-                <a href="/privacy" className="text-gray-500 hover:text-white transition-colors">
+                <a href="/comingsoon" className="text-gray-500 hover:text-white transition-colors">
                   Privacy Policy
                 </a>
-                <a href="/terms" className="text-gray-500 hover:text-white transition-colors">
+                <a href="/comingsoon" className="text-gray-500 hover:text-white transition-colors">
                   Terms of Service
                 </a>
               </div>
