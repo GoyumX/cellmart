@@ -41,7 +41,6 @@ export const api = createApi({
         method: "DELETE",
       }),
     }),
-
     getAccessories: builder.query({
       query: () => "accessories",
     }),
@@ -93,11 +92,20 @@ export const api = createApi({
         url: `reservation/${id}`,
         method: "DELETE",
       }),
-  })
+    }), 
+    createAISearch: builder.mutation({
+      query: (query) => ({
+        url: "llm/search/retrieve",
+        method: "POST",
+        body: query,
+      }),
+    }),
   }),
 });
 
 export const {
+  
+  useCreateAISearchMutation,
 
   useGetPhonesQuery,
   useGetPhoneByIdQuery,
@@ -116,5 +124,4 @@ export const {
   useGetReservationQuery,
   useUpdateReservationMutation,
   useDeleteReservationMutation,
-
 } = api;
