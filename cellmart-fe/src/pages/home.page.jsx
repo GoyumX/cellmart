@@ -3,6 +3,7 @@ import MobileListing from '@/components/MobileListing'
 import AccessoriesListing from '@/components/AccessoriesListing'
 import Testimonials from '@/components/Testimonials'
 import ExploreGrid from '@/components/ExploreGrid'
+import AISearchResults from '@/components/AISearchResults'
 
 const HomePage = () => {
 
@@ -16,6 +17,7 @@ const HomePage = () => {
         />
         <Hero/>
       </div>
+      <AISearchResults/>
       <MobileListing/> 
       <AccessoriesListing/>
       <ExploreGrid/>
