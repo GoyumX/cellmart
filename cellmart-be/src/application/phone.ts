@@ -103,28 +103,29 @@ export const createPhone = async (req : Request, res: Response, next:NextFunctio
 };
 
 export const updatePhone = async (req : Request, res: Response, next:NextFunction) => {
-    try{
-      const phoneId = req.params.phoneId;
-      const updatedPhone = req.body;
+  
+  try{
+    const phoneId = req.params.id;
+    const phone = PhoneDTO.safeParse(req.body);
     
-      if (
-        !updatedPhone.brand ||
-        !updatedPhone.model ||
-        !updatedPhone.price ||
-        !updatedPhone.pointdesc ||
-        !updatedPhone.description ||
-        !updatedPhone.storage ||
-        !updatedPhone.colors ||
-        !updatedPhone.warranty ||
-        !updatedPhone.image
-      ) {
-        throw new ValidationError("Invalid phone data");
-      }
+    if (!phone.success) {
+      throw new ValidationError(phone.error.message)
+    }
 
-      await Phone.findByIdAndUpdate(phoneId, updatedPhone);
-    
+    await Phone.findByIdAndUpdate(phoneId, {
+      brand: phone.data.brand,
+      model: phone.data.model,
+      price: phone.data.price,
+      pointdesc: phone.data.pointdesc,
+      description: phone.data.description,
+      storage: phone.data.storage,
+      colors: phone.data.colors,
+      warranty: phone.data.warranty,
+      image: phone.data.image,
+    });
       res.status(200).send();
       return;
+      
     }catch(error){
       next(error);
     }

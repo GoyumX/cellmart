@@ -71,25 +71,24 @@ export const deleteAccessories = async (req : Request, res: Response, next:NextF
 };
 
 export const updateAccessories = async (req : Request, res: Response, next:NextFunction) => {
-    try{
-      const accessorieId = req.params.accessorieId;
-      const updatedAccessorie = req.body;
-    
-      if (
-          !updatedAccessorie.type ||
-          !updatedAccessorie.brand ||
-          !updatedAccessorie.model ||
-          !updatedAccessorie.image ||
-          !updatedAccessorie.price ||
-          !updatedAccessorie.pointdesc ||
-          !updatedAccessorie.description ||
-          !updatedAccessorie.warranty
-      ) {
-        throw new ValidationError("Invalid accessory data");
-      }
+  try{
+    const accessorieId = req.params.id;
+    const accessory = AccessoryDTO.safeParse(req.body);
+  
+    if (!accessory.success) {
+      throw new ValidationError(accessory.error.message)
+    }
 
-      await Accessories.findByIdAndUpdate(accessorieId, updatedAccessorie);
-    
+    await Accessories.findByIdAndUpdate(accessorieId, {
+      type: accessory.data.type,
+      brand: accessory.data.brand,
+      model: accessory.data.model,
+      price: accessory.data.price,
+      pointdesc: accessory.data.pointdesc,
+      description: accessory.data.description,
+      warranty: accessory.data.warranty,
+      image: accessory.data.image,
+    });
       res.status(200).send();
       return;
 
