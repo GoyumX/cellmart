@@ -1,11 +1,20 @@
 import { Button } from "@/components/ui/button";
 import {  Sparkles, ArrowRight, Zap } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { submit } from "@/lib/features/searchSlice";
 
 export default function Hero() {
+
+  const dispatch = useDispatch();
+
   const handleSearch = (e) => {
     e.preventDefault();
-    const searachQuery = e.target.search.value;
-    console.log(searachQuery);
+    const searchQuery = e.target.search.value;
+    
+    if (searchQuery) {
+      dispatch(submit(searchQuery));
+      console.log("Search dispatched:", searchQuery);
+    }
   };
 
   return (
