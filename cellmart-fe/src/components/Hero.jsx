@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {  Sparkles, ArrowRight, Zap } from "lucide-react";
+import { Sparkles, ArrowRight, Zap } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { submit } from "@/lib/features/searchSlice";
 
@@ -9,13 +9,22 @@ export default function Hero() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const searchQuery = e.target.search.value;
+    const searchQuery = e.target.search.value.trim();
     
     if (searchQuery) {
       dispatch(submit(searchQuery));
-      console.log("Search dispatched:", searchQuery);
+      setTimeout(() => {
+        const aiSearchSection = document.getElementById('ai-search-results');
+        if (aiSearchSection) {
+          aiSearchSection.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }, 100);
     }
   };
+
 
   return (
     <div className="relative z-10 min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8">
@@ -146,32 +155,64 @@ export default function Hero() {
         }
         
         .search-input {
-          background: #000000;
+          background: #000000 !important;
           border: none;
           outline: none;
           width: 100%;
           height: calc(100% - 4px);
           border-radius: 9999px;
-          color: #e5e7eb;
+          color: #e5e7eb !important;
           padding: 0 1rem;
           font-size: 0.875rem;
           margin: 2px;
+          padding-right: 140px; /* More space for button */
         }
         
         @media (min-width: 640px) {
           .search-input {
             padding: 0 1.5rem;
             font-size: 1.125rem;
+            padding-right: 200px; /* Even more space on larger screens */
+          }
+        }
+        
+        @media (min-width: 768px) {
+          .search-input {
+            padding-right: 240px; /* Maximum space for largest button */
           }
         }
         
         .search-input::placeholder {
-          color: rgba(229, 231, 235, 0.4);
+          color: rgba(229, 231, 235, 0.4) !important;
         }
         
         .search-input:focus {
-          outline: none;
-          box-shadow: none;
+          outline: none !important;
+          box-shadow: none !important;
+          background: #000000 !important;
+        }
+
+        /* Fix autocomplete styling */
+        .search-input:-webkit-autofill,
+        .search-input:-webkit-autofill:hover,
+        .search-input:-webkit-autofill:focus,
+        .search-input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 30px #000000 inset !important;
+          -webkit-text-fill-color: #e5e7eb !important;
+          background: #000000 !important;
+        }
+
+        .search-input:-moz-autofill,
+        .search-input:-moz-autofill:hover,
+        .search-input:-moz-autofill:focus {
+          background: #000000 !important;
+          color: #e5e7eb !important;
+        }
+
+        /* Prevent text selection highlighting issues */
+        .search-input::selection {
+          background: rgba(201, 143, 101, 0.3);
+          color: #e5e7eb;
         }
         
         .search-button {
@@ -281,24 +322,22 @@ export default function Hero() {
                 <div className="border-gradient rounded-full max-w-full max-h-full" />
                 
                 <div className="input-container">
-                  
-                <form className="search-input" onSubmit={handleSearch}>
-
-                  <input
-                    type="text"
-                    name="search"
-                    placeholder="I need a phone with excellent camera, long battery life, under 150,000 LKR ..."
-                    className="search-input pl-16 sm:pl-20 pr-20 sm:pr-52 text-sm sm:text-base"
-                  />
-                  
-                  <Button
-                    type="submit"
-                    className="search-button rounded-full w-20 sm:w-32 md:w-48 h-[calc(100%-16px)] flex items-center gap-1 sm:gap-2 hover:bg-gray-600 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse text-sky-500" />
-                    <span className="hidden sm:inline text-sm sm:text-lg">AI Search</span>
-                    <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 sm:hidden" />
-                  </Button>
+                  <form className="w-full h-full" onSubmit={handleSearch}>
+                    <input
+                      type="text"
+                      name="search"
+                      placeholder="I need a phone with excellent camera, long battery life, under 150,000 LKR ..."
+                      className="search-input pl-16 sm:pl-20 pr-20 sm:pr-52 text-sm sm:text-base"
+                    />
+                    
+                    <Button
+                      type="submit"
+                      className="search-button rounded-full w-20 sm:w-32 md:w-48 h-[calc(100%-16px)] flex items-center gap-1 sm:gap-2 hover:bg-gray-600 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse text-sky-500" />
+                      <span className="hidden sm:inline text-sm sm:text-lg">AI Search</span>
+                      <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 sm:hidden" />
+                    </Button>
                   </form>
                 </div>
               </div>
@@ -312,35 +351,36 @@ export default function Hero() {
             Popular searches:
           </span>
           {[
-            "Gaming phones",
-            "Best camera phones", 
-            "Budget under $500",
-            "Latest 5G devices",
-            "Long battery life"
+            "Phones with the Best Camera",
+            "Latest IPhone Arrivals",
+            "Best Mobiles for Social Media", 
+            "Top Phones Under 250,000 LKR",
+            "Latest devices with 5G",
+            "Phones with Long Battery & Fast Charging"
           ].map((suggestion, index) => (
             <button
               key={index}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-900/40 hover:bg-gray-800/30 border border-gray-700/50 hover:border-gray-800/30 text-gray-300 hover:text-yellow-100 text-xs sm:text-sm transition-all duration-300 backdrop-blur-sm hover:transform hover:scale-105">
+              className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gray-900/40 hover:bg-white/5 border border-gray-700/50 hover:border-gray-800/30 text-gray-300 hover:text-blue-100 text-xs sm:text-sm transition-all duration-300 backdrop-blur-sm hover:transform hover:scale-105">
               {suggestion}
             </button>
           ))}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 text-center px-4">
-          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 ">
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-blue-500/60 mb-2 transition-colors">
+          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:bg-white/5 hover:transform hover:scale-105 ">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100   mb-2 transition-colors">
               12K+
             </div>
             <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider">Devices Available</div>
           </div>
-          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 ">
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-blue-500/60 mb-2 transition-colors">
+          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 hover:bg-white/5">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 mb-2 transition-colors">
               50K+
             </div>
             <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider">Happy Customers</div>
           </div>
-          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 ">
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100 group-hover:text-blue-500/60 mb-2 transition-colors">
+          <div className="group cursor-pointer p-4 sm:p-6 rounded-2xl bg-gray-800/30 border border-gray-800/50  transition-all duration-300 hover:transform hover:scale-105 hover:bg-white/5">
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-100  mb-2 transition-colors">
               99%
             </div>
             <div className="text-gray-400 text-xs sm:text-sm uppercase tracking-wider">Match Accuracy</div>

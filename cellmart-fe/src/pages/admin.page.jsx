@@ -33,7 +33,7 @@ export default function AdminPagePage() {
                             Add Phone
                         </Button>
                     </DialogTrigger>
-                    <DialogContent className="bg-gray-950 border-0 text-gray-100 max-w-[95vw] sm:max-w-2xl max-h-[95vh] p-0">
+                    <DialogContent className="bg-black border-0 text-gray-100 max-w-[95vw] sm:max-w-2xl max-h-[95vh] p-0">
                         <ScrollArea className="max-h-[95vh] w-full">
                             <div className="p-6">
                                 <CreatePhoneForm onSuccess={() => setPhoneDialogOpen(false)} />
@@ -49,7 +49,7 @@ export default function AdminPagePage() {
                             Add Accessory
                         </Button>
                     </DialogTrigger>
-                    <DialogContent className="bg-gray-950 border-0 text-gray-100 max-w-[95vw] sm:max-w-2xl max-h-[95vh] p-0">
+                    <DialogContent className="bg-black border-0 text-gray-100 max-w-[95vw] sm:max-w-2xl max-h-[95vh] p-0">
                         <ScrollArea className="max-h-[95vh] w-full">
                             <div className="p-6">
                                 <CreateAccessoryForm onSuccess={() => setAccessoryDialogOpen(false)} />

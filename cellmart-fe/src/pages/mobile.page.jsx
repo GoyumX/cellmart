@@ -43,39 +43,39 @@ const PhonePage = () => {
 
   if (isLoading)
     return (
-      <div className="min-h-screen bg-gray-950 text-gray-100">
+      <div className="min-h-screen bg-black text-gray-100">
         <div className="container mx-auto px-4 py-8">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <Skeleton className="w-full h-[400px] rounded-lg bg-gray-800" />
+              <Skeleton className="w-full h-[400px] rounded-lg bg-white/5" />
               <div className="flex space-x-2">
-                <Skeleton className="h-6 w-24 bg-gray-800" />
-                <Skeleton className="h-6 w-32 bg-gray-800" />
-                <Skeleton className="h-6 w-28 bg-gray-800" />
+                <Skeleton className="h-6 w-24 bg-white/5" />
+                <Skeleton className="h-6 w-32 bg-white/5" />
+                <Skeleton className="h-6 w-28 bg-white/5" />
               </div>
             </div>
             <div className="space-y-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <Skeleton className="h-8 w-64 mb-2 bg-gray-800" />
-                  <Skeleton className="h-4 w-48 bg-gray-800" />
+                  <Skeleton className="h-8 w-64 mb-2 bg-white/5" />
+                  <Skeleton className="h-4 w-48 bg-white/5" />
                 </div>
-                <Skeleton className="h-10 w-10 rounded-full bg-gray-800" />
+                <Skeleton className="h-10 w-10 rounded-full bg-white/5" />
               </div>
-              <Skeleton className="h-4 w-36 bg-gray-800" />
+              <Skeleton className="h-4 w-36 bg-white/5" />
               <div className="space-y-2">
-                <Skeleton className="h-4 w-full bg-gray-800" />
-                <Skeleton className="h-4 w-full bg-gray-800" />
-                <Skeleton className="h-4 w-3/4 bg-gray-800" />
+                <Skeleton className="h-4 w-full bg-white/5" />
+                <Skeleton className="h-4 w-full bg-white/5" />
+                <Skeleton className="h-4 w-3/4 bg-white/5" />
               </div>
               <Card className="bg-gray-900 border-gray-800">
                 <CardContent className="p-4">
-                  <Skeleton className="h-6 w-32 mb-4 bg-gray-800" />
+                  <Skeleton className="h-6 w-32 mb-4 bg-white/5" />
                   <div className="grid grid-cols-2 gap-4">
                     {[...Array(4)].map((_, index) => (
                       <div key={index} className="flex items-center">
-                        <Skeleton className="h-5 w-5 mr-2 bg-gray-800" />
-                        <Skeleton className="h-4 w-24 bg-gray-800" />
+                        <Skeleton className="h-5 w-5 mr-2 bg-white/5" />
+                        <Skeleton className="h-4 w-24 bg-white/5" />
                       </div>
                     ))}
                   </div>
@@ -83,10 +83,10 @@ const PhonePage = () => {
               </Card>
               <div className="flex items-center justify-between">
                 <div>
-                  <Skeleton className="h-8 w-24 mb-1 bg-gray-800" />
-                  <Skeleton className="h-4 w-16 bg-gray-800" />
+                  <Skeleton className="h-8 w-24 mb-1 bg-white/5" />
+                  <Skeleton className="h-4 w-16 bg-white/5" />
                 </div>
-                <Skeleton className="h-12 w-32 bg-gray-800" />
+                <Skeleton className="h-12 w-32 bg-white/5" />
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@ const PhonePage = () => {
 
   if (isError) 
     return (
-      <div className="min-h-screen bg-gray-950 text-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-black text-gray-100 flex items-center justify-center">
         <p className="text-red-400">Error: {error?.message || "Failed to load phone details"}</p>
       </div>
     );
@@ -154,7 +154,7 @@ const PhonePage = () => {
                   <p className="text-gray-400 text-sm sm:text-base">CellMart Premium Collection</p>
                 </div>
               </div>
-              <Button variant="outline" size="icon" className="border-gray-700 hover:bg-gray-800 text-gray-400 w-8 h-8 sm:w-10 sm:h-10">
+              <Button variant="outline" size="icon" className="border-gray-700 hover:bg-amber-200 text-gray-400 w-8 h-8 sm:w-10 sm:h-10">
                 <Star className="h-3 w-3 sm:h-4 sm:w-4" />
                 <span className="sr-only">Add to favorites</span>
               </Button>
@@ -192,7 +192,7 @@ const PhonePage = () => {
                     <Badge 
                       key={index} 
                       variant="outline" 
-                      className="border-gray-600 text-gray-300 hover:bg-gray-800 text-xs sm:text-sm">
+                      className="border-gray-600 text-gray-300 hover:bg-white/5 text-xs sm:text-sm">
                       {storage}
                     </Badge>
                   ))}
@@ -211,7 +211,7 @@ const PhonePage = () => {
                     <Badge 
                       key={index} 
                       variant="outline" 
-                      className="border-gray-600 text-gray-300 hover:bg-gray-800 text-xs sm:text-sm">
+                      className="border-gray-600 text-gray-300 hover:bg-white/5 text-xs sm:text-sm">
                       {color}
                     </Badge>
                   ))}

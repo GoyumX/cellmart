@@ -140,15 +140,15 @@ function Navigation() {
         </div>
 
         <div className="flex items-center space-x-2 sm:space-x-4">
-          <Button variant="ghost" className="hidden sm:flex text-white hover:bg-white/10 transition-colors">
+          <Button variant="ghost" className="hidden sm:flex px-3 py-3 text-white hover:bg-white/20 transition-colors hover:text-white">
             <Globe className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2" />
-            <span className="text-sm sm:text-base">EN</span>
+            <span className="text-sm sm:text-base"> EN </span>
           </Button>
           <SignedOut>
-            <Button variant="ghost" asChild className="text-sm sm:text-base text-white hover:bg-white/10 transition-colors">
+            <Button variant="default" asChild className="text-sm sm:text-base text-white hover:bg-white/20 transition-colors">
               <Link to="/sign-in">Log In</Link>
             </Button>
-            <Button asChild className="text-sm sm:text-base">
+            <Button variant="default"  asChild className="text-sm sm:text-base text-white hover:bg-white/20 transition-colors">
               <Link to="/sign-up">Sign Up</Link>
             </Button>
           </SignedOut>

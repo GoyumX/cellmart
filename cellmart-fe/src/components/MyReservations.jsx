@@ -11,6 +11,7 @@ import {
     useDeleteReservationMutation,
 } from "@/lib/api";
 import ReservationCard from "./ReservationCard";
+import { Link } from "react-router";
 
 const PhoneReservationsList = ({ reservations, onDelete }) => {
     const [productData, setProductData] = useState({});
@@ -182,9 +183,11 @@ export default function MyReservations() {
                             <Package className="h-12 w-12 md:h-16 md:w-16 text-gray-400 mx-auto mb-4" />
                             <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2">No Reservations Yet</h3>
                             <p className="text-gray-600 mb-6">You haven't made any reservations yet. Browse our products to get started!</p>
+                            <Link to="/"> 
                             <Button className="bg-blue-600 hover:bg-blue-700">
                                 Browse Products
                             </Button>
+                            </Link>
                         </CardContent>
                     </Card>
                 ) : (

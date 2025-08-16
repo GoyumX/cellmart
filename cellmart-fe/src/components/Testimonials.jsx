@@ -12,17 +12,17 @@ import * as React from "react"
 const testimonials = [
   {
     id: 1,
-    name: "Nimesh Perera",
+    name: "Pramoth Piumal",
     city: "Nugegoda",
-    avatar: "N",
+    avatar: "P",
     rating: 5,
     text: "CellMart's customer service is the best! They helped me choose the right phone with so much patience."
   },
   {
     id: 2,
-    name: "Kavindi Fernando",
+    name: "Nadun Fernando",
     city: "Dehiwala",
-    avatar: "K",
+    avatar: "N",
     rating: 4,
     text: "I'm really happy with CellMart's friendly staff. They made the whole buying process so easy."
   },
@@ -36,9 +36,9 @@ const testimonials = [
   },
   {
     id: 4,
-    name: "Sajini Gunawardena",
+    name: "Yasindu Pawan",
     city: "Kotte",
-    avatar: "S",
+    avatar: "Y",
     rating: 5,
     text: "Such warm and professional service at CellMart. They even helped set up my new phone before I left!"
   },
@@ -84,9 +84,9 @@ const testimonials = [
   },
   {
     id: 10,
-    name: "Tharindu Abeysekara",
+    name: "Sheran Fernando",
     city: "Piliyandala",
-    avatar: "T",
+    avatar: "S",
     rating: 5,
     text: "I appreciate how CellMart staff take time to explain everything clearly. Great service!"
   },
@@ -108,7 +108,7 @@ const testimonials = [
   },
   {
     id: 13,
-    name: "Sahan Peris",
+    name: "Swetha Bernadette",
     city: "Ratmalana",
     avatar: "S",
     rating: 5,
@@ -124,13 +124,54 @@ const testimonials = [
   },
   {
     id: 15,
-    name: "Ravindu Amarasinghe",
+    name: "Ammra Rizwan",
     city: "Thalawathugoda",
-    avatar: "R",
+    avatar: "A",
     rating: 5,
     text: "CellMart's customer support is excellent. I recommend them to all my friends!"
-  }
+  },
+  {
+    id: 16,
+    name: "Ruwan Liyanage",
+    city: "Panadura",
+    avatar: "R",
+    rating: 5,
+    text: "I was impressed by how CellMart staff handled my queries with patience. Truly a professional team."
+  },
+  {
+    id: 17,
+    name: "Menaka Jayawardena",
+    city: "Homagama",
+    avatar: "M",
+    rating: 4,
+    text: "Good service and reasonable prices. CellMart is my trusted store whenever I need a phone."
+  },
+  {
+    id: 18,
+    name: "Leshan Chanaka",
+    city: "Ampara",
+    avatar: "L",
+    rating: 5,
+    text: "They not only helped me pick a phone but also gave useful tips on maintenance. Highly recommend CellMart!"
+  },
+  {
+    id: 19,
+    name: "Thilanka Dilshan",
+    city: "Wattala",
+    avatar: "T",
+    rating: 4,
+    text: "The atmosphere at CellMart is friendly and welcoming. I felt valued as a customer."
+  },
+  {
+    id: 20,
+    name: "Binara Mindada",
+    city: "Ja-Ela",
+    avatar: "B",
+    rating: 5,
+    text: "Excellent service with a smile! I’ll definitely return to CellMart for my next upgrade."
+  },
 ];
+
 
   
 const Testimonials = () => {
@@ -152,10 +193,11 @@ const Testimonials = () => {
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
 
         <div className="text-center mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/80 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+        <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-white/80 text-xs sm:text-sm font-medium mb-4 sm:mb-6 hover:scale-105 transition-transform duration-300 hover:bg-white/8">
             <Quote className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Customer Stories</span>
           </div>
+
           
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4 sm:mb-6 leading-tight">
             What Our Customers Say
@@ -224,8 +266,8 @@ const Testimonials = () => {
           </Carousel>
         </div>
 
-        <div className="text-center mt-12 sm:mt-16">
-          <div className="inline-flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
+        <div className="text-center mt-12 sm:mt-16 ">
+          <div className="hover:scale-105 transition-transform duration-300 hover:bg-white/8 inline-flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10">
             <div className="text-center">
               <div className="text-xl sm:text-2xl font-bold text-white">4.8/5</div>
               <div className="text-gray-400 text-xs sm:text-sm">Average Rating</div>

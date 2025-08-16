@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Facebook, Instagram, Twitter, MessageCircle, Smartphone, Mail, ArrowUp } from "lucide-react"
+import { SocialIcon } from 'react-social-icons'
+
+import { Facebook, Instagram, Twitter, MessageCircle, Smartphone, Mail, ArrowUp, } from "lucide-react"
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -30,8 +32,8 @@ export default function Footer() {
               Our mission is to provide premium quality mobile devices and exceptional service at the best prices for customers across Sri Lanka.
             </p>
             <div className="flex flex-col gap-2 text-xs sm:text-sm">
-              <div className="text-gray-500">🕒 Mon - Sat: 9:00 AM - 8:00 PM</div>
-              <div className="text-gray-500">📍 Colombo, Sri Lanka</div>
+              <div className="text-gray-500">Mon - Sat: 9:00 AM - 8:00 PM</div>
+              <div className="text-gray-500">Piliyandala, Colombo, Sri Lanka</div>
             </div>
           </div>
 
@@ -67,7 +69,6 @@ export default function Footer() {
             <ul className="space-y-2 sm:space-y-3">
               {[
                 { name: "Contact Us", href: "/contact" },
-                { name: "Help Center", href: "/help" },
                 { name: "Returns & Exchanges", href: "/return" },
                 { name: "FAQ", href: "/faq" }
               ].map((link, index) => (
@@ -88,46 +89,14 @@ export default function Footer() {
               Stay Connected
               <div className="absolute bottom-0 left-0 w-8 h-0.5 bg-white/30"></div>
             </h3>
-            <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed">
-              Get the latest updates on new arrivals, exclusive deals, and tech news.
-            </p>
-            
-            <form className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-              <div className="relative group">
-                <div className="absolute -inset-0.5 bg-white/10 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <div className="relative bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="bg-transparent border-none text-white placeholder:text-gray-500 focus:border-none focus:outline-none focus-visible:ring-0 h-10 sm:h-12 pl-3 sm:pl-4 text-sm sm:text-base"
-                  />
-                </div>
-              </div>
-              <Button 
-                type="submit" 
-                className="w-full bg-white text-black hover:bg-gray-200 font-semibold h-10 sm:h-12 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
-              >
-                <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
-                Subscribe
-              </Button>
-            </form>
-
-            <div className="flex gap-2 sm:gap-3">
-              {[
-                { icon: Instagram, href: "https://instagram.com", color: "hover:bg-pink-600" },
-                { icon: Twitter, href: "https://twitter.com", color: "hover:bg-blue-500" },
-                { icon: Facebook, href: "https://facebook.com", color: "hover:bg-blue-600" },
-                { icon: MessageCircle, href: "https://discord.com", color: "hover:bg-indigo-600" }
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className={`group bg-white/5 backdrop-blur-md p-2 sm:p-3 rounded-xl border border-white/10 ${social.color} transition-all duration-300 hover:transform hover:scale-110 hover:border-white/30`}
-                >
-                  <social.icon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-white transition-colors" />
-                  <span className="sr-only">{social.icon.name}</span>
-                </a>
-              ))}
+            <p className="text-gray-400 mb-4 sm:mb-6 leading-relaxed">
+              Get the latest news, updates on new arrivals, exclusive deals, and tech news by following our,
+            </p> 
+            <div className="flex justify-center items-center gap-2 flex sm:gap-3">
+            <SocialIcon bgColor="black" href="www.instagram.com" url="www.instagram.com" />
+            <SocialIcon bgColor="black" href="www.tiktok.com" url="www.tiktok.com" />
+            <SocialIcon bgColor="black" href="www.facebook.com" url="www.facebook.com" />
+            <SocialIcon bgColor="black" href="www.twitter.com" url="www.twitter.com" />
             </div>
           </div>
         </div>

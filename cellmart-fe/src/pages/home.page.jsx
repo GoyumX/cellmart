@@ -17,7 +17,9 @@ const HomePage = () => {
         />
         <Hero/>
       </div>
-      <AISearchResults/>
+      <div id="ai-search-results">
+        <AISearchResults/>
+      </div>
       <MobileListing/> 
       <AccessoriesListing/>
       <ExploreGrid/>
