@@ -17,6 +17,7 @@ import MobilesPage from "./pages/mobiles.page";
 import AccessoriesPage from "./pages/accessories.page";
 import ReservationsPage from "./pages/reservations.page";
 import ComingSoonPage from "./pages/coming-soon.page";
+import AdminProductsPage from "./pages/admin-products.page";
 import ScrollToTop from "./components/ScrollToTop";
 
 import { ClerkProvider } from "@clerk/clerk-react";
@@ -45,7 +46,8 @@ function App() {
                   <Route path="/account" element={<AccountPage />} />
                   <Route element={<AdminProtectedLayout />}>
                   <Route path="/admin" element={<AdminPage />} />
-                  <Route path="/admin/reservations" element={<ReservationsPage />} />            
+                  <Route path="/admin/reservations" element={<ReservationsPage />} />
+                  <Route path="/admin/products" element={<AdminProductsPage />} /> 
                   </Route>
                 </Route>
               </Route>
