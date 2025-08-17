@@ -107,9 +107,9 @@ const PhonePage = () => {
 
   return (
     <div className="min-h-screen bg-black text-gray-100">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          <div className="space-y-4 sm:space-y-6">
             <div className="relative w-full h-[500px] rounded-lg overflow-hidden">
               <img
                 src={phone.image}
@@ -122,7 +122,7 @@ const PhonePage = () => {
                 <p className="text-xs sm:text-sm text-gray-400">One-time payment</p>
               </div>
               <SignedOut>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                <Button size="lg" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">
                   <Link to="/sign-in">Sign in to Reserve</Link>
                 </Button>
               </SignedOut>
@@ -133,7 +133,7 @@ const PhonePage = () => {
                   </DialogTrigger>
                   <DialogContent className="bg-black border-gray-800 text-gray-100 max-w-sm sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle className="text-white text-lg sm:text-xl">Reserve Your Mobile Device</DialogTitle>
+                      <DialogTitle className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-sm sm:text-base">Reserve Your Mobile Device</DialogTitle>
                       <DialogDescription className="text-gray-400">
                         Fill in your details and we'll contact you within 24 hours to complete your reservation.
                       </DialogDescription>

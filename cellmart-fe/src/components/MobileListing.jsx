@@ -94,7 +94,7 @@ export default function MobileListings() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
         {
-          filteredmobiles.slice(0, 8).map((product) => {
+          filteredmobiles.slice().reverse().slice(0, 12).map((product) => {
             return (<ProductCard key={product._id} product={product} />)
           })
         }
