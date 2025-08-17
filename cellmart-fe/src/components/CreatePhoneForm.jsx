@@ -48,9 +48,9 @@ export default function CreatePhoneForm() {
 
     const handleSubmit = async (values) => {
         const { brand, model, price, pointdesc, description, storage, colors, warranty, image } = values;
-        
+        let loadingToast;
         try {
-            toast.loading("Creating phone...");
+            loadingToast = toast.loading("Creating phone...");
             await createPhone({
                 brand,
                 model,
@@ -62,9 +62,13 @@ export default function CreatePhoneForm() {
                 warranty,
                 image,
             }).unwrap();
+            toast.dismiss(loadingToast);
             toast.success("Phone created successfully");
-            form.reset(); // Reset form after successful submission
+            form.reset();
         } catch (error) {
+            if (loadingToast) {
+                toast.dismiss(loadingToast);
+            }
             toast.error("Phone creation failed");
             console.error("Error creating phone:", error);
         }

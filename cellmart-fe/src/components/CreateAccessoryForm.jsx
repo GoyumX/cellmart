@@ -61,9 +61,9 @@ export default function CreateAccessoryForm() {
 
     const handleSubmit = async (values) => {
         const { type, brand, model, price, pointdesc, description, warranty, image } = values;
-        
+         let loadingToast;
         try {
-            toast.loading("Creating accessory...");
+            loadingToast = toast.loading("Creating accessory...");
             await createAccessory({
                 type,
                 brand,
@@ -74,9 +74,13 @@ export default function CreateAccessoryForm() {
                 warranty,
                 image,
             }).unwrap();
+            toast.dismiss(loadingToast);
             toast.success("Accessory created successfully");
-            form.reset(); // Reset form after successful submission
+            form.reset(); 
         } catch (error) {
+            if (loadingToast) {
+                toast.dismiss(loadingToast);
+            }
             toast.error("Accessory creation failed");
             console.error("Error creating accessory:", error);
         }
