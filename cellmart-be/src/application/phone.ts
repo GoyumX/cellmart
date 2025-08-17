@@ -65,14 +65,34 @@ export const getPhoneById = async (req : Request, res: Response, next:NextFuncti
     }
 };
   
-export const deletePhone = async (req : Request, res: Response, next:NextFunction) => {
-  try{
+export const deletePhone = async (req: Request, res: Response, next: NextFunction) => {
+  try {
     const phoneId = req.params.id;
+    
+    const phone = await Phone.findById(phoneId);
+    if (!phone) {
+      throw new NotFoundError("Phone not found");
+    }
+
     await Phone.findByIdAndDelete(phoneId);
-  
-    res.status(200).send();
+    console.log(`Phone with ID ${phoneId} deleted from database`);
+
+    try {
+      const embeddingDeleted = await deletePhoneEmbedding(phoneId);
+      if (embeddingDeleted) {
+        console.log("Phone embedding deleted successfully");
+      } else {
+        console.warn("No embedding found to delete, but phone was deleted successfully");
+      }
+    } catch (embeddingError) {
+      console.error("Failed to delete phone embedding:", embeddingError);
+    }
+
+    res.status(200).json({
+      message: "Phone deleted successfully"
+    });
     return;
-  }catch(error){
+  } catch (error) {
     next(error);
   }
 };
@@ -113,6 +133,7 @@ export const createPhone = async (req: Request, res: Response, next: NextFunctio
     next(error);
   }
 };
+
 export const updatePhone = async (req : Request, res: Response, next:NextFunction) => {
   
   try{
@@ -168,6 +189,36 @@ const createPhoneEmbedding = async (phoneData: any) => {
     return true;
   } catch (error) {
     console.error("Error creating phone embedding:", error);
+    throw error;
+  }
+};
+
+const deletePhoneEmbedding = async (phoneId: string) => {
+  try {
+    const collection = mongoose.connection.collection("DeviceVectors");
+    
+    const existingEmbedding = await collection.findOne({ "metadata._id": new mongoose.Types.ObjectId(phoneId) });
+    console.log(`Found embedding for phone ${phoneId}:`, existingEmbedding ? "YES" : "NO");
+    
+    const deleteQueries = [
+      { "metadata._id": new mongoose.Types.ObjectId(phoneId) },
+      { "metadata._id": phoneId },
+      { "_id": new mongoose.Types.ObjectId(phoneId) }
+    ];
+    
+    let totalDeleted = 0;
+    for (const query of deleteQueries) {
+      const deleteResult = await collection.deleteMany(query);
+      totalDeleted += deleteResult.deletedCount;
+      if (deleteResult.deletedCount > 0) {
+        console.log(`Deleted ${deleteResult.deletedCount} embedding(s) with query:`, query);
+      }
+    }
+    
+    console.log(`Total deleted ${totalDeleted} embedding(s) for phone ${phoneId}`);
+    return totalDeleted > 0;
+  } catch (error) {
+    console.error("Error deleting phone embedding:", error);
     throw error;
   }
 };
