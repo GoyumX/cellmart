@@ -18,7 +18,15 @@ app.use(express.json());
 
 connectDB();
 
-app.use(cors());
+const corsOptions = {
+	origin: process.env.CORS_ORIGIN,
+};
+
+app.use(cors(corsOptions));
+
+app.get("/", (req, res) => {
+	res.send("API is running...");
+});
 
 app.use("/api/phones", PhoneRouter);
 app.use("/api/accessories", AccessoriesRouter);
