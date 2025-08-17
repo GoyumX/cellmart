@@ -33,5 +33,5 @@ app.use("/api/accessories", AccessoriesRouter);
 app.use("/api/reservation", ReservationRouter);
 app.use("/api/llm", llmRouter)
 
-const PORT = 8000;
+const PORT = process.env.PORT
 app.listen(PORT, ()=>console.log(`Server is running on port ${PORT}...`));
