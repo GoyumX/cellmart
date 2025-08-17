@@ -10,6 +10,7 @@ import ReservationRouter from "./api/reservation";
 import llmRouter from "./api/llm";
 
 import { clerkMiddleware } from "@clerk/express";
+import globalErrorHandlingMiddleware from "./api/middleware/global-error-handling-middleware";
 
 const app = express();
 
@@ -32,6 +33,9 @@ app.use("/api/phones", PhoneRouter);
 app.use("/api/accessories", AccessoriesRouter);
 app.use("/api/reservation", ReservationRouter);
 app.use("/api/llm", llmRouter)
+
+app.use(globalErrorHandlingMiddleware);
+
 
 const PORT = process.env.PORT
 app.listen(PORT, ()=>console.log(`Server is running on port ${PORT}...`));

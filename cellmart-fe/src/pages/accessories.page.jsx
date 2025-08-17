@@ -1,5 +1,5 @@
-import ProductCard from "../components/ProductCard";
-import BrandTab from "../components/BrandTab";
+import ProductCard from "@/components/ProductCard";
+import BrandTab from "@/components/BrandTab";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { useGetAccessoriesQuery } from "@/lib/api";
