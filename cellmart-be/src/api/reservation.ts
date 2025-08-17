@@ -6,7 +6,6 @@ import {
     deleteReservation,
 } from "../application/reservation";
 import { isAuthenticated } from "./middleware/authentication-middleware";
-import { isAdmin } from "./middleware/authorization-middleware";
 
 const reservationRouter = express.Router();
 

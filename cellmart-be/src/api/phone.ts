@@ -5,7 +5,6 @@ import {
     getAllPhone,
     deletePhone,
     updatePhone,
-    generateResponse
 } from "../application/phone";
 import { isAuthenticated } from "./middleware/authentication-middleware";
 import { isAdmin } from "./middleware/authorization-middleware";

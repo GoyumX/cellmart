@@ -7,40 +7,6 @@ import { OpenAIEmbeddings } from "@langchain/openai";
 import { Document } from "@langchain/core/documents";
 import { MongoDBAtlasVectorSearch } from "@langchain/mongodb";
 import mongoose from "mongoose";
-import OpenAI from "openai";
-
-export const generateResponse = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const { prompt } = req.body;
-
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-
-  const completion = await openai.chat.completions.create({
-    model: "gpt-5-nano",
-    messages: [
-      // {
-      //   role: "system",
-      //   content:
-      //     "You are assistant of a phone shop called cellmart",
-      // },
-      { role: "user", content: prompt },
-    ],
-    store: true,
-  });
-
-  res.status(200).json({
-    message: {
-      role: "assistant",
-      content: completion.choices[0].message.content,
-    },
-  });
-  return;
-};
 
 export const getAllPhone = async (req : Request, res: Response, next:NextFunction) => {
   try{
