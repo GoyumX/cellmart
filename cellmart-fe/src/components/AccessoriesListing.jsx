@@ -1,4 +1,4 @@
-import ProductCard from "./productCard";
+import ProductCard from "./ProductCard"; 
 import BrandTab from "./BrandTab";
 import { useState } from "react";
 import { useGetAccessoriesQuery } from "@/lib/api";
