@@ -75,15 +75,15 @@ export default function AllDevices() {
         mobile.brand.toLowerCase().includes(selectedBrand.toLowerCase())
       );
 
-  // Sort filter
-  const sortedMobiles = filteredMobiles ? [...filteredMobiles].sort((a, b) => {
+  const sortedMobiles = filteredMobiles ? (() => {
     if (sortOrder === "low-to-high") {
-      return parseFloat(a.price) - parseFloat(b.price);
+      return [...filteredMobiles].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
     } else if (sortOrder === "high-to-low") {
-      return parseFloat(b.price) - parseFloat(a.price);
+      return [...filteredMobiles].sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    } else {
+      return [...filteredMobiles].reverse();
     }
-    return 0;
-  }) : [];
+  })() : [];
 
   // Calculate pagination
   const total = sortedMobiles.length;
