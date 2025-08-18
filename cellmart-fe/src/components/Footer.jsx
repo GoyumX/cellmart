@@ -94,10 +94,10 @@ export default function Footer() {
               Get the latest news, updates on new arrivals, exclusive deals, and tech news by following our,
             </p> 
             <div className="flex justify-center items-center gap-2 flex sm:gap-3">
-            <SocialIcon bgColor="black" href="www.instagram.com" url="www.instagram.com" />
-            <SocialIcon bgColor="black" href="www.tiktok.com" url="www.tiktok.com" />
-            <SocialIcon bgColor="black" href="www.facebook.com" url="www.facebook.com" />
-            <SocialIcon bgColor="black" href="www.twitter.com" url="www.twitter.com" />
+            <SocialIcon bgColor="black" url="http://instagram.com" target="_blank" />
+              <SocialIcon bgColor="black" url="http://tiktok.com" target="_blank" />
+              <SocialIcon bgColor="black" url="http://facebook.com" target="_blank" />
+              <SocialIcon bgColor="black" url="http://twitter.com" target="_blank" />
             </div>
           </div>
         </div>

@@ -61,30 +61,29 @@ export default function CreateAccessoryForm() {
 
     const handleSubmit = async (values) => {
         const { type, brand, model, price, pointdesc, description, warranty, image } = values;
-         let loadingToast;
+      
+        const toastId = toast.loading("Creating accessory...");
+      
         try {
-            loadingToast = toast.loading("Creating accessory...");
-            await createAccessory({
-                type,
-                brand,
-                model,
-                price,
-                pointdesc,
-                description,
-                warranty,
-                image,
-            }).unwrap();
-            toast.dismiss(loadingToast);
-            toast.success("Accessory created successfully");
-            form.reset(); 
+          await createAccessory({
+            type,
+            brand,
+            model,
+            price,
+            pointdesc,
+            description,
+            warranty,
+            image,
+          }).unwrap();
+      
+          // update the same toast
+          toast.success("Accessory created successfully", { id: toastId });
+          form.reset();
         } catch (error) {
-            if (loadingToast) {
-                toast.dismiss(loadingToast);
-            }
-            toast.error("Accessory creation failed");
-            console.error("Error creating accessory:", error);
+          toast.error("Accessory creation failed", { id: toastId });
+          console.error("Error creating accessory:", error);
         }
-    };
+      };
 
     return (
         <div className="min-h-screen bg-black text-gray-100 p-8">
@@ -175,7 +174,7 @@ export default function CreateAccessoryForm() {
                                         <FormControl>
                                             <Input
                                                 type="number"
-                                                placeholder="e.g., 24900 (for $249.00)"
+                                                placeholder="e.g., 8999 LKR"
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 onChange={(e) => {
                                                     field.onChange(parseFloat(e.target.value) || 0);
@@ -184,7 +183,7 @@ export default function CreateAccessoryForm() {
                                             />
                                         </FormControl>
                                         <FormDescription className="text-gray-500">
-                                            Enter price in cents (e.g., 24900 for $249.00)
+                                            Enter price in LKR 
                                         </FormDescription>
                                         <FormMessage className="text-red-400" />
                                     </FormItem>

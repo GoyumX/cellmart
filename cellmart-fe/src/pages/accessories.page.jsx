@@ -27,18 +27,22 @@ export default function AllAccessories() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialType = searchParams.get("type") || "ALL";
   const initialPage = parseInt(searchParams.get("page")) || 1;
+  const initialSort = searchParams.get("sort") || "default"; // Add initial sort from URL
 
   const [selectedType, setSelectedType] = useState(initialType);
-  const [sortOrder, setSortOrder] = useState("default");
+  const [sortOrder, setSortOrder] = useState(initialSort); // Use initial sort
   const [page, setPage] = useState(initialPage);
   
-  const limit = 12; // limiter ekk set krl items per section
+  const limit = 12;
 
   useEffect(() => {
     const typeFromUrl = searchParams.get("type") || "ALL";
     const pageFromUrl = parseInt(searchParams.get("page")) || 1;
+    const sortFromUrl = searchParams.get("sort") || "default"; // Read sort from URL
+    
     setSelectedType(typeFromUrl);
     setPage(pageFromUrl);
+    setSortOrder(sortFromUrl); // Update sort state
   }, [searchParams]);
 
   const handleSelectedType = (type) => {
@@ -54,10 +58,11 @@ export default function AllAccessories() {
 
   const handleSortChange = (value) => {
     setSortOrder(value);
-    setPage(1);  // page eke sort change krm resetter
+    setPage(1);
     
-    // Update URL params
+    // Update URL params including sort
     const newParams = new URLSearchParams(searchParams);
+    newParams.set("sort", value); 
     newParams.set("page", "1");
     setSearchParams(newParams);
   };
@@ -68,7 +73,6 @@ export default function AllAccessories() {
     const newParams = new URLSearchParams(searchParams);
     newParams.set("page", newPage.toString());
     setSearchParams(newParams);
-    
   };
 
   const filteredAccessories = selectedType === "ALL" 
@@ -77,15 +81,17 @@ export default function AllAccessories() {
         accessory.type.toLowerCase().includes(selectedType.toLowerCase())
       );
 
-  // Sort filtereee
-  const sortedAccessories = filteredAccessories ? [...filteredAccessories].sort((a, b) => {
-    if (sortOrder === "low-to-high") {
-      return parseFloat(a.price) - parseFloat(b.price);
-    } else if (sortOrder === "high-to-low") {
-      return parseFloat(b.price) - parseFloat(a.price);
-    }
-    return 0;
-  }) : [];
+  // Sort filtered accessories
+  let sortedAccessories = filteredAccessories ? [...filteredAccessories] : [];
+  
+  if (sortOrder === "low-to-high") {
+    sortedAccessories.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+  } else if (sortOrder === "high-to-low") {
+    sortedAccessories.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+  } else {
+    // For "default" sorting, reverse to show newest items first
+    sortedAccessories = sortedAccessories.reverse();
+  }
 
   const total = sortedAccessories.length;
   const totalPages = Math.ceil(total / limit);
@@ -233,7 +239,7 @@ export default function AllAccessories() {
       {/* Products grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4">
         {currentItems.length > 0 ? (
-          currentItems.reverse().map((product) => (
+          currentItems.map((product) => ( 
             <ProductCard key={product._id} product={product} />
           ))
         ) : (

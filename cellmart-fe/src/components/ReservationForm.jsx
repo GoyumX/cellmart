@@ -57,18 +57,22 @@ const ReservationForm = (props) => {
         };
         
         try {
-            toast.loading("Creating Reservation...");
-            await createReservation(reserveData).unwrap();
-            toast.success("Reservation successful! We'll contact you within 24 hours.");
+            await toast.promise(
+                createReservation(reserveData).unwrap(),
+                {
+                    loading: 'Creating Reservation...',
+                    success: "Reservation successful! We'll contact you within 24 hours.",
+                    error: 'Reservation failed. Please try again.',
+                }
+            );
             
             setTimeout(() => {
                 navigate(`/`);
             }, 2000);
         } catch (error) {
-            toast.error("Reservation failed. Please try again.");
             console.error(error); 
         }
-
+    
         console.log("Reservation Data:", reserveData);
     };
 

@@ -49,8 +49,8 @@ export default function CreatePhoneForm() {
     const handleSubmit = async (values) => {
         const { brand, model, price, pointdesc, description, storage, colors, warranty, image } = values;
         let loadingToast;
+        loadingToast = toast.loading("Creating phone...");
         try {
-            loadingToast = toast.loading("Creating phone...");
             await createPhone({
                 brand,
                 model,
@@ -133,7 +133,7 @@ export default function CreatePhoneForm() {
                                         <FormControl>
                                             <Input
                                                 type="number"
-                                                placeholder="e.g., 419900 LKR "
+                                                placeholder="e.g., 419900 LKR"
                                                 className="bg-white/5 border-gray-600 text-gray-100 placeholder-gray-400 focus:border-blue-500"
                                                 onChange={(e) => {
                                                     field.onChange(parseFloat(e.target.value) || 0);
